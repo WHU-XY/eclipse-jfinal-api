@@ -1,0 +1,71 @@
+<% DIRECTIVE SAFE_OUTPUT_OPEN; var headContent = {
+include("/pages/template/head.html"){} %>
+<script type="text/javascript">
+	var oper = {
+		save:function(id){
+			if(!validForm()) {
+				return false;
+			}
+			id = id || '0';
+			var url = 'manage/task/save/'+id;
+			form1.action = url;
+			form1.submit();
+			return true;
+		}	
+	};
+</script>
+
+<% }; var bodyContent = { %>
+<form name="form1" action="" method="post" class="form-horizontal"
+	role="form">
+	<input type="hidden" name="model.id" value="${model.id}" />
+	<table class="table">
+		<% // 列表头部%>
+		<tr>
+			<td>部门</td>
+			<td><select name="model.dept_id" class="form-control"
+				valid='vselect' validname='类型'>
+					${parentSelect}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>项目编号</td>
+			<td><input class="form-control" type="text" name="model.main_pro_id"
+				value="${model.main_pro_id }"/></td>
+		</tr>
+		<tr>
+			<td>项目名称</td>
+			<td><input class="form-control" type="text" name="model.main_pro_name"
+				value="${model.main_pro_name }"/></td>
+		</tr>
+		<tr>
+			<td>任务</td>
+			<td><input class="form-control" type="text" name="model.task_name"
+				value="${model.task_name}" /></td>
+		</tr>
+		<tr>
+			<td>负责人</td>
+			<td><input class="form-control" type="text"
+				name="model.task_charger" value="${model.task_charger}" /></td>
+		</tr>
+		<tr>
+			<td>截止日期</td>
+			<td><input class="form-control" type="text"
+				name="model.deadline" value="${model.deadline}" /></td>
+		</tr>
+	</table>
+
+	<div style="height: 50px; clear: both;">&nbsp;</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container"
+			style="padding: 5px 0px 5px 0px; text-align: center;">
+			<button class="btn btn-primary"
+				onclick="oper.save(${model.id!'0'});return false;">保 存</button>
+			<button class="btn btn-default" onclick="closeIframe();return false;">关 闭</button>
+		</div>
+	</nav>
+</form>
+<%}; %> <%
+layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){
+%> <%} DIRECTIVE SAFE_OUTPUT_CLOSE; %>

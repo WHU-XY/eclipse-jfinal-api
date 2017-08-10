@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://localhost/suntrans_task?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = root
+password =65536
+devMode = true

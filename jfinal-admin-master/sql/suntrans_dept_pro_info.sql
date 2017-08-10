@@ -1,0 +1,13 @@
+INSERT INTO `suntrans_dept_pro_info` VALUES (1, '1', '市场部', '1', '网站完善', NULL, '刘蔚丹', '2017-9-30 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (2, '1', '市场部', '2', '展厅完美', NULL, '刘蔚丹', '2017-8-15 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (3, '1', '市场部', '3', '宣传册完整', NULL, '刘蔚丹', '2017-7-31 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (4, '1', '市场部', '4', '专题片完成', NULL, '刘蔚丹', '2017-8-31 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (5, '1', '市场部', '5', '需关注项目', NULL, '刘蔚丹', NULL);
+INSERT INTO `suntrans_dept_pro_info` VALUES (6, '2', '研发部', '1', '电动车充电系统', '产品外观设计', '汤迪', '2017-7-21 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (7, '2', '研发部', '1', '电动车充电系统', '软件系统完善', '陈亚舫', '2017-7-21 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (8, '2', '研发部', '1', '电动车充电系统', '硬件系统完善', '黄宗赵', '2017-7-21 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (9, '2', '研发部', '1', '电动车充电系统', '可控恒流大功率充电器研发', '邓开放', '2017-9-17 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (10, '2', '研发部', '1', '电动车充电系统', '产品外观设计', '汤迪', '2017-7-28 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (11, '2', '研发部', '1', '电动车充电系统', '硬件系统研发', '新招人', '2017-10-17 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (12, '2', '研发部', '1', '电动车充电系统', '软件系统研发', '陈亚舫', '2017-10-25 00:00:00');
+INSERT INTO `suntrans_dept_pro_info` VALUES (13, '2', '研发部', '2', '智能建筑', '万华项目系统', '卢萍、许慧敏', '2017-7-21 00:00:00');
