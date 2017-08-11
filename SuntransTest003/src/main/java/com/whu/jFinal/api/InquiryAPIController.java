@@ -318,12 +318,9 @@ public class InquiryAPIController extends BaseAPIController {
         renderJson(response);
 	}
 	
-	
+	//调用存储过程返回结果集通过renderjson将结果集返回
 	@ClearInterceptor
 	public void Inquiry_Data_Service1() {
-
-		
-		
 		TestResponse response = new TestResponse();
 		List<TestModel> list=new ArrayList<>();
         Db.execute(new ICallback() {
