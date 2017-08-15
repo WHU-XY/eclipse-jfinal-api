@@ -5,6 +5,7 @@ import com.whu.jFinal.api.AccountAPIController;
 import com.whu.jFinal.api.CommonAPIController;
 import com.whu.jFinal.api.FileAPIController;
 import com.whu.jFinal.api.InquiryAPIController;
+import com.whu.jFinal.api.SmartBuildingAPIController;
 
 
 public class APIRouter extends Routes {
@@ -19,6 +20,8 @@ public class APIRouter extends Routes {
 	     add("/api/fs",FileAPIController.class);
 	     //查询有关
 	     add("/api/inquiry",InquiryAPIController.class);
+	     //智慧建筑
+	     add("/api/smartbuilding",SmartBuildingAPIController.class);
 	}
 
 }
