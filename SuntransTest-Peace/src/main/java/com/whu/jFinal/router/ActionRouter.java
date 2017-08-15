@@ -1,7 +1,7 @@
 package com.whu.jFinal.router;
 
 import com.jfinal.config.Routes;
-import com.whu.jFinal.action.IndexAction;
+import com.whu.jFinal.action.IndexActionController;
 
 
 public class ActionRouter extends Routes {
@@ -9,7 +9,7 @@ public class ActionRouter extends Routes {
 	@Override
 	public void config() {
 		// TODO Auto-generated method stub
-		add("/", IndexAction.class, "/");
+		add("/", IndexActionController.class, "/");
 	}
 
 }

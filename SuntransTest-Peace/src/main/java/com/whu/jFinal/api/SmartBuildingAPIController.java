@@ -37,53 +37,53 @@ public class SmartBuildingAPIController extends BaseAPIController {
 		renderJson(response);
 
 	}
-	
+
 	@ClearInterceptor
 	public void Inquiry_Scence_Device() {
-		String scence_id=getPara("scence_id");
+		String scence_id = getPara("scence_id");
 		ScenceDeviceResponse response = new ScenceDeviceResponse();
-		List<ScenceDeviceModel> list=new ArrayList<>();
-        Db.execute(new ICallback() {
-            @Override
+		List<ScenceDeviceModel> list = new ArrayList<>();
+		Db.execute(new ICallback() {
+			@Override
 			public Object call(Connection arg0) throws SQLException {
 				// TODO Auto-generated method stub
-            	CallableStatement proc = null;
-                try {
-                    proc = arg0.prepareCall("{call select_scence_device(?)}");
-                    proc.setString(1,scence_id);
-                    boolean hadResults = proc.execute();
-                    while(hadResults) {
-                    	ResultSet rs = proc.getResultSet();
-                    	
-                    	while(rs!=null&&rs.next()) {
-                    		ScenceDeviceModel model = new ScenceDeviceModel();
-                    		model.setname(rs.getString(1));
-                    		model.setstatus(rs.getString(2));
-                    		model.setdev_id(rs.getString(3));
-                    		model.setchannel_num(rs.getString(4));
-                    		model.setchannel_id(rs.getString(5));
-                    		list.add(model);              
-                    	}
-                    	hadResults = proc.getMoreResults();
-                    	
-                    }
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }finally{
-                    if(proc!=null){
-                        proc.close();
-                    }
-                    if(arg0!=null){
-                    	arg0.close();
-                    }  
-                }
-            	return null;
+				CallableStatement proc = null;
+				try {
+					proc = arg0.prepareCall("{call select_scence_device(?)}");
+					proc.setString(1, scence_id);
+					boolean hadResults = proc.execute();
+					while (hadResults) {
+						ResultSet rs = proc.getResultSet();
+
+						while (rs != null && rs.next()) {
+							ScenceDeviceModel model = new ScenceDeviceModel();
+							model.setname(rs.getString(1));
+							model.setstatus(rs.getString(2));
+							model.setdev_id(rs.getString(3));
+							model.setchannel_num(rs.getString(4));
+							model.setchannel_id(rs.getString(5));
+							list.add(model);
+						}
+						hadResults = proc.getMoreResults();
+
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					if (proc != null) {
+						proc.close();
+					}
+					if (arg0 != null) {
+						arg0.close();
+					}
+				}
+				return null;
 			}
-        });
-       response.setInfo(list);
-       response.setMessage("Inquiry_Scence_Device success");
-       renderJson(response);//返回数据模型 response其实是一个模型
+		});
+		response.setInfo(list);
+		response.setMessage("Inquiry_Scence_Device success");
+		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
 }

@@ -5,7 +5,6 @@ import com.jfinal.aop.ClearInterceptor;
 import com.jfinal.log.Logger;
 import com.jfinal.plugin.activerecord.Db;
 import com.whu.jFinal.bean.Code;
-import com.whu.jFinal.bean.Constant;
 import com.whu.jFinal.common.Require;
 import com.whu.jFinal.common.token.TokenManager;
 import com.whu.jFinal.config.AppProperty;
