@@ -20,7 +20,8 @@ public class APINotFoundHandler extends Handler {
     @Override
     public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled) {
         if (!target.startsWith("/api")) {
-            this.nextHandler.handle(target, request, response, isHandled);
+        	next.handle(target, request, response, isHandled);
+            //this.handle(target, request, response, isHandled);
             return;
         }
         
@@ -31,9 +32,14 @@ public class APINotFoundHandler extends Handler {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            RenderFactory.me().getJsonRender(new BaseResponse(Code.NOT_FOUND, "resource is not found")).setContext(request, response).render();
+            BaseResponse myresponse = new BaseResponse();
+            myresponse.setCode(Code.NOT_FOUND);
+            myresponse.setMessage("resource is not found");
+            RenderFactory renderfactory = new RenderFactory();
+            renderfactory.getJsonRender(myresponse).setContext(request, response).render();
         } else {
-            this.nextHandler.handle(target, request, response, isHandled);
+        	next.handle(target, request, response, isHandled);
+            //this.handle(target, request, response, isHandled);
         }
     }
 }

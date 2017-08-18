@@ -11,6 +11,6 @@ public class TokenUtil {
      * @return token号码
      */
     public static String generateToken() {
-        return RandomUtils.randomCustomUUID().concat(RandomUtils.randomString(6));
+        return RandomUtils.randomCustomUUID().concat(RandomUtils.randomString(32));
     }
 }

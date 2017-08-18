@@ -12,7 +12,7 @@ import com.whu.jFinal.utils.StringUtils;
  */
 public class IndexActionController extends Controller {
     public void index () {
-        render("index.jsp");
+        render("doc/index.html");
     }
     
     public void doc() {

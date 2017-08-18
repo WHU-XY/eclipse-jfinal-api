@@ -57,9 +57,9 @@ public class AppConfig extends JFinalConfig {
         ActiveRecordPlugin arp = new ActiveRecordPlugin(hcp);
         arg0.add(arp);
 		
-		arp.addMapping("t_user", User.USER_ID, User.class);//用户表
-        arp.addMapping("t_register_code", RegisterCode.MOBILE, RegisterCode.class); //注册验证码对象
-        arp.addMapping("t_feedback", FeedBack.class); //意见反馈表
+		arp.addMapping("scp_user", User.USER_ID, User.class);//用户表
+        arp.addMapping("scp_register_code", RegisterCode.MOBILE, RegisterCode.class); //注册验证码对象
+        arp.addMapping("scp_feedback", FeedBack.class); //意见反馈表
 	}
 
 	@Override

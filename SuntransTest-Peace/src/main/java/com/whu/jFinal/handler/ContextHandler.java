@@ -13,6 +13,6 @@ public class ContextHandler extends Handler {
     @Override
     public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled) {
         Context.me().setRequest(request);
-        this.nextHandler.handle(target, request, response, isHandled);
+        next.handle(target, request, response, isHandled);
     }
 }

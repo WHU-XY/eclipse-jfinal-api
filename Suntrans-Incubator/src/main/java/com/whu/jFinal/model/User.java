@@ -11,7 +11,7 @@ import java.util.Map;
 public class User extends Model<User> {
 	public static String USER_ID = "userId";
 	public static String LOGIN_NAME = "loginName";
-	public static String NICK_NAME = "nickName";
+	public static String NICK_NAME = "username";
 	public static String PASSWORD = "password";
 	public static String SEX = "sex";
 	public static String EMAIL = "email";

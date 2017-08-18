@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jfinal.aop.Before;
-import com.jfinal.aop.ClearInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.ICallback;
 import com.jfinal.plugin.activerecord.Record;
@@ -21,7 +21,7 @@ import com.whu.jFinal.response.ScenceDeviceResponse;
 @Before(TokenInterceptor.class)
 public class SmartBuildingAPIController extends BaseAPIController {
 
-	@ClearInterceptor
+	@Clear
 	public void Inquiry_Scence_Model() {
 
 		String sql = "SELECT a.name,a.scence_id FROM scp_smart_scence as a where a.user_id=1 and a.status=1";
@@ -38,7 +38,7 @@ public class SmartBuildingAPIController extends BaseAPIController {
 
 	}
 
-	@ClearInterceptor
+	@Clear
 	public void Inquiry_Scence_Device() {
 		String scence_id = getPara("scence_id");
 		ScenceDeviceResponse response = new ScenceDeviceResponse();

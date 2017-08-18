@@ -1,8 +1,7 @@
 package com.whu.jFinal.api;
 
 import com.jfinal.aop.Before;
-import com.jfinal.aop.ClearInterceptor;
-import com.jfinal.log.Logger;
+import com.jfinal.aop.Clear;
 import com.jfinal.plugin.activerecord.Db;
 import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.common.Require;
@@ -23,6 +22,8 @@ import static com.whu.jFinal.model.User.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 /**
  * 用户账号相关的接口*
@@ -45,7 +46,7 @@ public class AccountAPIController extends BaseAPIController {
     /**
      * 检查用户账号是否被注册*
      */
-    @ClearInterceptor
+    @Clear
     public void checkUser() {
         String loginName = getPara("loginName");
         if (StringUtils.isEmpty(loginName)) {
@@ -61,7 +62,7 @@ public class AccountAPIController extends BaseAPIController {
      * 1. 检查是否被注册*
      * 2. 发送短信验证码*
      */
-    @ClearInterceptor
+    @Clear
     public void sendCode() {
         String loginName = getPara("loginName");
         if (StringUtils.isEmpty(loginName)) {
@@ -107,7 +108,7 @@ public class AccountAPIController extends BaseAPIController {
 	/**
 	 * 用户注册
 	 */
-    @ClearInterceptor()
+    @Clear
 	public void register(){
 		//必填信息
 		String loginName = getPara("loginName");//登录帐号
@@ -163,7 +164,7 @@ public class AccountAPIController extends BaseAPIController {
     /**
      * 登录接口
      */
-    @ClearInterceptor()
+    @Clear
     public void login() {
         String loginName = getPara("loginName");
         String password = getPara("password");

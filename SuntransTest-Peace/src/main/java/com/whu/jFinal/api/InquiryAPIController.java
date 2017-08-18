@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jfinal.aop.Before;
-import com.jfinal.aop.ClearInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.ICallback;
 import com.jfinal.plugin.activerecord.Record;
@@ -283,7 +283,7 @@ public class InquiryAPIController extends BaseAPIController {
 	}
 	
 	
-	@ClearInterceptor
+	@Clear
 	public void Inquiry_Data_Service() {
 
 		LoginResponse response = new LoginResponse();
@@ -319,7 +319,7 @@ public class InquiryAPIController extends BaseAPIController {
 	}
 	
 	
-	@ClearInterceptor
+	@Clear
 	public void Inquiry_Data_Service1() {
 
 		

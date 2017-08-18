@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.interceptor.ErrorInterceptor;
 import com.whu.jFinal.response.BaseResponse;
@@ -15,7 +15,7 @@ public class ErrorInterceptor implements Interceptor {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ErrorInterceptor.class);
 
-	public void intercept(ActionInvocation arg0) {
+	public void intercept(Invocation arg0) {
 		// TODO Auto-generated method stub
 		try
         {

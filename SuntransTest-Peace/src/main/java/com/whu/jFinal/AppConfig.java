@@ -8,6 +8,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.render.ViewType;
+import com.jfinal.template.Engine;
 import com.whu.jFinal.config.Context;
 import com.whu.jFinal.handler.APINotFoundHandler;
 import com.whu.jFinal.handler.ContextHandler;
@@ -80,11 +81,23 @@ public class AppConfig extends JFinalConfig {
 	@Override
     public void afterJFinalStart() {
         Context.me().init();
+        System.out.println("#########################################");
+		System.out.println("############和平校区系统启动完成##########");
+		System.out.println("#########################################");
     }
 
     @Override
     public void beforeJFinalStop() {
         Context.me().destroy();
+        System.out.println("#########################################");
+		System.out.println("############和平校区系统停止完成##########");
+		System.out.println("#########################################");
     }
+
+	@Override
+	public void configEngine(Engine me) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

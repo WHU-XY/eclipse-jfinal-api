@@ -1,7 +1,7 @@
 package com.whu.jFinal.interceptor;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.common.token.TokenManager;
@@ -16,7 +16,7 @@ import com.whu.jFinal.utils.StringUtils;
  * @package com.pet.project.interceptor
  */
 public class TokenInterceptor implements Interceptor {
-    public void intercept(ActionInvocation ai) {
+    public void intercept(Invocation ai) {
         Controller controller = ai.getController();
         String token = controller.getPara("token");
         if (StringUtils.isEmpty(token)) {

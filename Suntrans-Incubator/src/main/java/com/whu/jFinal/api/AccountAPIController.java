@@ -53,7 +53,7 @@ public class AccountAPIController extends BaseAPIController {
             return;
         }
         //检查手机号码是否被注册
-        boolean exists = Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null;
+        boolean exists = Db.findFirst("SELECT * FROM scp_user WHERE loginName=?", loginName) != null;
         renderJson(new BaseResponse(exists ? Code.SUCCESS:Code.FAIL, exists ? "registered" : "unregistered"));
     }
     
@@ -76,7 +76,7 @@ public class AccountAPIController extends BaseAPIController {
         }
 
         //检查手机号码是否被注册
-        if (Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null) {
+        if (Db.findFirst("SELECT * FROM scp_user WHERE loginName=?", loginName) != null) {
             renderJson(new BaseResponse(Code.ACCOUNT_EXISTS,"mobile already registered"));
             return;
         }
@@ -94,7 +94,7 @@ public class AccountAPIController extends BaseAPIController {
                 .set(RegisterCode.CODE, smsCode);
 
         //保存数据
-        if (Db.findFirst("SELECT * FROM t_register_code WHERE mobile=?", loginName) == null) {
+        if (Db.findFirst("SELECT * FROM scp_register_code WHERE mobile=?", loginName) == null) {
             registerCode.save();
         } else {
             registerCode.update();
@@ -114,46 +114,48 @@ public class AccountAPIController extends BaseAPIController {
         int code = getParaToInt("code", 0);//手机验证码
         int sex = getParaToInt("sex", 0);//性别
         String password = getPara("password");//密码
-		String nickName = getPara("nickName");//昵称
+		String username = getPara("username");//昵称
     	//头像信息，为空则使用默认头像地址
     	String avatar = getPara("avatar", AppProperty.me().defaultUserAvatar());
 
         //校验必填项参数
 		if(!notNull(Require.me()
-                .put(loginName, "loginName can not be null")
+                .put(loginName, "username can not be null")
                 .put(code, "code can not be null")//根据业务需求决定是否使用此字段
                 .put(password, "password can not be null")
-                .put(nickName, "nickName can not be null"))){
+                .put(username, "nickName can not be null"))){
 			return;
 		}
 
         //检查账户是否已被注册
-        if (Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null) {
+        if (Db.findFirst("SELECT * FROM scp_user WHERE loginName=?", loginName) != null) {
             renderJson(new BaseResponse(Code.ACCOUNT_EXISTS, "mobile already registered"));
             return;
         }
         
         //检查验证码是否有效, 如果业务不需要，则无需保存此段代码
-        if (Db.findFirst("SELECT * FROM t_register_code WHERE mobile=? AND code = ?", loginName, code) == null) {
+        if (Db.findFirst("SELECT * FROM scp_register_code WHERE mobile=? AND code = ?", loginName, code) == null) {
             renderJson(new BaseResponse(Code.CODE_ERROR,"code is invalid"));
             return;
         }
         
 		//保存用户数据
 		String userId = RandomUtils.randomCustomUUID();
+		String salt = SMSUtils.randomSMSCode(6);
 
 		new User()
                 .set("userId", userId)
                 .set(User.LOGIN_NAME, loginName)
-		        .set(User.PASSWORD, StringUtils.encodePassword(password, "md5"))
-                .set(User.NICK_NAME, nickName)
+		        .set(User.PASSWORD, StringUtils.encodePassword(salt+password, "md5"))
+                .set(User.NICK_NAME, username)
 		        .set(User.CREATION_DATE, DateUtils.getNowTimeStamp())
 		        .set(User.SEX, sex)
                 .set(User.AVATAR, avatar)
+                .set("salt", salt)
                 .save();
 		
         //删除验证码记录
-        Db.update("DELETE FROM t_register_code WHERE mobile=? AND code = ?", loginName, code);
+        Db.update("DELETE FROM scp_register_code WHERE mobile=? AND code = ?", loginName, code);
         
 		//返回数据
 		renderJson(new BaseResponse("success"));
@@ -165,25 +167,30 @@ public class AccountAPIController extends BaseAPIController {
      */
     @ClearInterceptor()
     public void login() {
-        String loginName = getPara("loginName");
+        String username = getPara("username");
         String password = getPara("password");
         //校验参数, 确保不能为空
         if (!notNull(Require.me()
-                .put(loginName, "loginName can not be null")
+                .put(username, "username can not be null")
                 .put(password, "password can not be null")
         )) {
             return;
         }
-        String sql = "SELECT * FROM t_user WHERE loginName=? AND password=?";
-        User nowUser = User.user.findFirst(sql, loginName, StringUtils.encodePassword(password, "md5"));
+        String sql = "SELECT * FROM scp_user WHERE username=?";
+        User nowUser = User.user.findFirst(sql, username);
         LoginResponse response = new LoginResponse();
         if (nowUser == null) {
-            response.setCode(Code.FAIL).setMessage("userName or password is error");
+            response.setCode(Code.FAIL).setMessage("username is error");
             renderJson(response);
             return;
+        }else if(!StringUtils.encodePassword(nowUser.getStr("salt")+password, "md5").equals(nowUser.getStr("password"))) {
+        	 response.setCode(Code.FAIL).setMessage("password is error");
+             renderJson(response);
+             return;
         }
         Map<String, Object> userInfo = new HashMap<String, Object>(nowUser.getAttrs());
         userInfo.remove(PASSWORD);
+        userInfo.remove("salt");
         response.setInfo(userInfo);
         response.setMessage("login success");
         response.setToken(TokenManager.getMe().generateToken(nowUser));
@@ -237,9 +244,9 @@ public class AccountAPIController extends BaseAPIController {
         boolean flag = false;
         BaseResponse response = new BaseResponse();
         User user = getUser();
-        String nickName = getPara("nickName");
-        if (StringUtils.isNotEmpty(nickName)) {
-            user.set(NICK_NAME, nickName);
+        String username = getPara("username");
+        if (StringUtils.isNotEmpty(username)) {
+            user.set(NICK_NAME, username);
             flag = true;
         }
 
