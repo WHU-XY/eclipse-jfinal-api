@@ -1,27 +1,11 @@
 package com.whu.jFinal.api;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.jfinal.aop.Before;
-import com.jfinal.aop.Clear;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.ICallback;
-import com.jfinal.plugin.activerecord.Record;
-import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.interceptor.TokenInterceptor;
-import com.whu.jFinal.model.ScenceDeviceModel;
-import com.whu.jFinal.response.InquiryDBResponse;
-import com.whu.jFinal.response.ScenceDeviceResponse;
-
 @Before(TokenInterceptor.class)
 public class SmartBuildingAPIController extends BaseAPIController {
 
-	@Clear
+/*	@Clear
 	public void Inquiry_Scence_Model() {
 
 		String sql = "SELECT a.name,a.scence_id FROM scp_smart_scence as a where a.user_id=1 and a.status=1";
@@ -85,5 +69,5 @@ public class SmartBuildingAPIController extends BaseAPIController {
 		response.setMessage("Inquiry_Scence_Device success");
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
-	}
+	}*/
 }

@@ -1,41 +1,14 @@
 package com.whu.jFinal.api;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import java.util.List;
-
-import java.util.Map;
-
 import com.jfinal.aop.Before;
-import com.jfinal.aop.Clear;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.ICallback;
-import com.jfinal.plugin.activerecord.Record;
-import com.whu.jFinal.bean.Code;
-import com.whu.jFinal.common.Require;
 import com.whu.jFinal.interceptor.TokenInterceptor;
-import com.whu.jFinal.model.RolesInfo;
-import com.whu.jFinal.model.StudentInfo;
-import com.whu.jFinal.model.TestModel;
-
-import com.whu.jFinal.model.Version;
-import com.whu.jFinal.response.InquiryDBResponse;
-import com.whu.jFinal.response.InquiryResponse;
-import com.whu.jFinal.response.InquiryRoleResponse;
-import com.whu.jFinal.response.InquiryRoomIdResponse;
-import com.whu.jFinal.response.LoginResponse;
-import com.whu.jFinal.response.TestResponse;
 
 @Before(TokenInterceptor.class)
 public class InquiryAPIController extends BaseAPIController {
+	
+	
 
-	public void Inquiry_UserInfo() {
+/*	public void Inquiry_UserInfo() {
 
 		String student_id = getPara("student_id");
 		// 校验参数, 确保不能为空
@@ -263,13 +236,13 @@ public class InquiryAPIController extends BaseAPIController {
 			String sql = "SELECT a.power_rate from admin_elec_meter_data as a,admin_elec_meter_info as b where b.dev_id=a.dev_id and b.room_id=?";
 			nowStudent = Db.find(sql,room_id);
 		}
-		/*
+		
 		 * switch(type) { case "account_balance": String sql =
 		 * "SELECT a.room_id,a.area,a.building,a.floor,a.room_num,b.student_name,b.academy,b.professional"
 		 * +
 		 * " FROM admin_room_info as a,admin_student_info as b where a.room_id=b.room_id and a.area=? and a.building=?"
 		 * ; nowStudent = Db.find(sql,room_id);break; }
-		 */
+		 
 		InquiryDBResponse response = new InquiryDBResponse();
 		if (nowStudent.isEmpty()) {
 			response.setCode(Code.FAIL).setMessage("area、building or floor is error");
@@ -370,6 +343,6 @@ public class InquiryAPIController extends BaseAPIController {
        renderJson(response);//返回数据模型 response其实是一个模型
         //renderJson(list);//list是List<TestModel>序列，实际应用时运用上一种方法更好有具体格式
         
-	}
+	}*/
 }
  

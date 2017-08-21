@@ -55,9 +55,9 @@ public class CommonAPIController extends BaseAPIController{
         renderJson(new BaseResponse(flag ? Code.SUCCESS : Code.FAIL, flag ? "意见反馈成功" : "意见反馈失败"));
     }
 
-    /**
+    /*    *//**
      * 版本更新检查*
-     */
+     *//*
     @ActionKey("/api/version/check")
     public void checkVersion() {
         String version = getPara("version");//版本号
@@ -82,5 +82,5 @@ public class CommonAPIController extends BaseAPIController{
         
         renderJson(response);
         
-    }
+    }*/
 }

@@ -1212,69 +1212,6 @@ footer {
            }</code>
 	</pre>
 	<hr class="page">
-	<h2 id="版本更新检查">
-		<a name="版本更新检查" href="#版本更新检查"></a>版本更新检查
-	</h2>
-	<h4 id="url">
-		<a name="url" href="#url"></a>URL
-	</h4>
-	<pre>
-		<code data-origin="<pre><code>/api/version/check</code></pre>">/api/version/check</code>
-	</pre>
-	<h4 id="method">
-		<a name="method" href="#method"></a>METHOD
-	</h4>
-	<pre>
-		<code data-origin="<pre><code>GET</code></pre>">GET</code>
-	</pre>
-	<h4 id="参数">
-		<a name="参数" href="#参数"></a>参数
-	</h4>
-	<ul>
-		<li><strong>version</strong>：当前客户端版本号（必需项）</li>
-		<li><strong>client</strong>: 客户端类型, 可选值只能是android和iphone（必需项）</li>
-	</ul>
-	<h4 id="响应结果说明">
-		<a name="响应结果说明" href="#响应结果说明"></a>响应结果说明
-	</h4>
-	<p>
-		<strong>节点说明</strong>：
-	</p>
-	<ul>
-		<li>code：表示响应结果状态，1表示有更新，0表示无更新</li>
-		<li>message：响应结果状态的文字说明</li>
-	</ul>
-	<p>
-		<strong>datum节点说明</strong>:
-	</p>
-	<ul>
-		<li>message: 更新说明</li>
-		<li>url: 新版本下载地址</li>
-		<li>version: 新版本号</li>
-	</ul>
-	<h5 id="简要示例">
-		<a name="简要示例" href="#简要示例"></a>简要示例
-	</h5>
-	<pre>
-		<code
-			data-origin="<pre><code>{
-           &quot;code&quot;: 1,
-           &quot;datum&quot;: {
-                 &quot;message&quot;: &quot;修复bug&quot;,
-                 &quot;url&quot;: &quot;http://mlongbo.com/android_0_1_1.apk&quot;,
-                 &quot;version&quot;: &quot;0.1.2&quot;
-              }
-         }</code></pre>">
-         {
-         "code": 1,
-         "datum": {
-            "message": "修复bug",
-            "url": "http://mlongbo.com/android_0_1_1.apk",
-            "version": "0.1.2"
-        }
-        }</code>
-	</pre>
-	<hr class="page">
 	<h2 id="附录(很重要)">
 		<a name="附录(很重要)" href="#附录(很重要)"></a>附录(很重要)
 	</h2>

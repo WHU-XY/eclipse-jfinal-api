@@ -48,13 +48,13 @@ public class AccountAPIController extends BaseAPIController {
      */
     @Clear
     public void checkUser() {
-        String loginName = getPara("loginName");
-        if (StringUtils.isEmpty(loginName)) {
-            renderArgumentError("loginName can not be null");
+        String tel_num = getPara("tel_num");
+        if (StringUtils.isEmpty(tel_num)) {
+            renderArgumentError("tel_num can not be null");
             return;
         }
         //检查手机号码是否被注册
-        boolean exists = Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null;
+        boolean exists = Db.findFirst("SELECT * FROM stp_api_user WHERE tel_num=?", tel_num) != null;
         renderJson(new BaseResponse(exists ? Code.SUCCESS:Code.FAIL, exists ? "registered" : "unregistered"));
     }
     
@@ -64,38 +64,38 @@ public class AccountAPIController extends BaseAPIController {
      */
     @Clear
     public void sendCode() {
-        String loginName = getPara("loginName");
-        if (StringUtils.isEmpty(loginName)) {
-            renderArgumentError("loginName can not be null");
+        String tel_num = getPara("tel_num");
+        if (StringUtils.isEmpty(tel_num)) {
+            renderArgumentError("tel_num can not be null");
             return;
         }
 
         //检查手机号码有效性
-        if (!SMSUtils.isMobileNo(loginName)) {
+        if (!SMSUtils.isMobileNo(tel_num)) {
             renderArgumentError("mobile number is invalid");
             return;
         }
 
         //检查手机号码是否被注册
-        if (Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null) {
+        if (Db.findFirst("SELECT * FROM stp_api_user WHERE tel_num=?", tel_num) != null) {
             renderJson(new BaseResponse(Code.ACCOUNT_EXISTS,"mobile already registered"));
             return;
         }
 
         String smsCode = SMSUtils.randomSMSCode(4);
         //发送短信验证码
-        if (!SMSUtils.sendCode(loginName, smsCode)) {
+        if (!SMSUtils.sendCode(tel_num, smsCode)) {
             renderFailed("sms send failed");
             return;
         }
         
         //保存验证码数据
         RegisterCode registerCode = new RegisterCode()
-                .set(RegisterCode.MOBILE, loginName)
+                .set(RegisterCode.MOBILE, tel_num)
                 .set(RegisterCode.CODE, smsCode);
 
         //保存数据
-        if (Db.findFirst("SELECT * FROM t_register_code WHERE mobile=?", loginName) == null) {
+        if (Db.findFirst("SELECT * FROM stp_api_register_code WHERE mobile=?", tel_num) == null) {
             registerCode.save();
         } else {
             registerCode.update();
@@ -111,50 +111,51 @@ public class AccountAPIController extends BaseAPIController {
     @Clear
 	public void register(){
 		//必填信息
-		String loginName = getPara("loginName");//登录帐号
+		String tel_num = getPara("tel_num");//登录帐号
         int code = getParaToInt("code", 0);//手机验证码
         int sex = getParaToInt("sex", 0);//性别
         String password = getPara("password");//密码
-		String nickName = getPara("nickName");//昵称
+		String username = getPara("username");//昵称
     	//头像信息，为空则使用默认头像地址
     	String avatar = getPara("avatar", AppProperty.me().defaultUserAvatar());
 
         //校验必填项参数
 		if(!notNull(Require.me()
-                .put(loginName, "loginName can not be null")
+                .put(tel_num, "loginName can not be null")
                 .put(code, "code can not be null")//根据业务需求决定是否使用此字段
                 .put(password, "password can not be null")
-                .put(nickName, "nickName can not be null"))){
+                .put(username, "username can not be null"))){
 			return;
 		}
 
         //检查账户是否已被注册
-        if (Db.findFirst("SELECT * FROM t_user WHERE loginName=?", loginName) != null) {
+        if (Db.findFirst("SELECT * FROM stp_api_user WHERE tel_num=?", tel_num) != null) {
             renderJson(new BaseResponse(Code.ACCOUNT_EXISTS, "mobile already registered"));
             return;
         }
         
         //检查验证码是否有效, 如果业务不需要，则无需保存此段代码
-        if (Db.findFirst("SELECT * FROM t_register_code WHERE mobile=? AND code = ?", loginName, code) == null) {
+        if (Db.findFirst("SELECT * FROM stp_api_register_code WHERE mobile=? AND code = ?", tel_num, code) == null) {
             renderJson(new BaseResponse(Code.CODE_ERROR,"code is invalid"));
             return;
         }
         
 		//保存用户数据
 		String userId = RandomUtils.randomCustomUUID();
-
+		String salt = SMSUtils.randomSMSCode(6);
 		new User()
                 .set("userId", userId)
-                .set(User.LOGIN_NAME, loginName)
-		        .set(User.PASSWORD, StringUtils.encodePassword(password, "md5"))
-                .set(User.NICK_NAME, nickName)
+                .set(User.TEL_NUM, tel_num)
+                .set(User.PASSWORD, StringUtils.encodePassword(salt+password, "md5"))
+                .set(User.USERNAME, username)
 		        .set(User.CREATION_DATE, DateUtils.getNowTimeStamp())
 		        .set(User.SEX, sex)
                 .set(User.AVATAR, avatar)
+                .set("salt", salt)
                 .save();
 		
         //删除验证码记录
-        Db.update("DELETE FROM t_register_code WHERE mobile=? AND code = ?", loginName, code);
+        Db.update("DELETE FROM stp_api_register_code WHERE mobile=? AND code = ?", tel_num, code);
         
 		//返回数据
 		renderJson(new BaseResponse("success"));
@@ -166,22 +167,26 @@ public class AccountAPIController extends BaseAPIController {
      */
     @Clear
     public void login() {
-        String loginName = getPara("loginName");
+        String username = getPara("username");
         String password = getPara("password");
         //校验参数, 确保不能为空
         if (!notNull(Require.me()
-                .put(loginName, "loginName can not be null")
+                .put(username, "username can not be null")
                 .put(password, "password can not be null")
         )) {
             return;
         }
-        String sql = "SELECT * FROM t_user WHERE loginName=? AND password=?";
-        User nowUser = User.user.findFirst(sql, loginName, StringUtils.encodePassword(password, "md5"));
+        String sql = "SELECT * FROM stp_api_user WHERE username=?";
+        User nowUser = User.user.findFirst(sql, username);
         LoginResponse response = new LoginResponse();
         if (nowUser == null) {
-            response.setCode(Code.FAIL).setMessage("userName or password is error");
+            response.setCode(Code.FAIL).setMessage("username is error");
             renderJson(response);
             return;
+        }else if(!StringUtils.encodePassword(nowUser.getStr("salt")+password, "md5").equals(nowUser.getStr("password"))) {
+        	 response.setCode(Code.FAIL).setMessage("password is error");
+             renderJson(response);
+             return;
         }
         Map<String, Object> userInfo = new HashMap<String, Object>(nowUser.getAttrs());
         userInfo.remove(PASSWORD);
@@ -238,9 +243,9 @@ public class AccountAPIController extends BaseAPIController {
         boolean flag = false;
         BaseResponse response = new BaseResponse();
         User user = getUser();
-        String nickName = getPara("nickName");
-        if (StringUtils.isNotEmpty(nickName)) {
-            user.set(NICK_NAME, nickName);
+        String username = getPara("username");
+        if (StringUtils.isNotEmpty(username)) {
+            user.set(USERNAME, username);
             flag = true;
         }
 
@@ -279,10 +284,6 @@ public class AccountAPIController extends BaseAPIController {
      * 修改密码
      */
     public void password(){
-        if (!"put".equalsIgnoreCase(getRequest().getMethod())) {
-            render404();
-            return;
-        }
     	//根据用户id，查出这个用户的密码，再跟传递的旧密码对比，一样就更新，否则提示旧密码错误
     	String oldPwd = getPara("oldPwd");
     	String newPwd = getPara("newPwd");
@@ -293,8 +294,8 @@ public class AccountAPIController extends BaseAPIController {
     	}
     	//用户真实的密码
         User nowUser = getUser();
-    	if(StringUtils.encodePassword(oldPwd, "md5").equalsIgnoreCase(nowUser.getStr(PASSWORD))){
-    		boolean flag = nowUser.set(User.PASSWORD, StringUtils.encodePassword(newPwd, "md5")).update();
+    	if(StringUtils.encodePassword(nowUser.getStr("salt")+oldPwd, "md5").equalsIgnoreCase(nowUser.getStr(PASSWORD))){
+    		boolean flag = nowUser.set(User.PASSWORD, StringUtils.encodePassword(nowUser.getStr("salt")+newPwd, "md5")).update();
             renderJson(new BaseResponse(flag?Code.SUCCESS:Code.FAIL, flag?"success":"failed"));
     	}else{
             renderJson(new BaseResponse(Code.FAIL, "oldPwd is invalid"));
