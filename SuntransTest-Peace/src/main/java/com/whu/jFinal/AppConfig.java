@@ -6,7 +6,9 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.cron4j.Cron4jPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.whu.jFinal.config.Context;
@@ -67,6 +69,8 @@ public class AppConfig extends JFinalConfig {
 //        arp.addMapping("admin_role_info", RolesInfo.role_id, RolesInfo.class);//管理員信息表
 //        arp.addMapping("admin_version_info",Version.type, Version.class);//版本信息表
 //        arp.addMapping("admin_room_info",BuildingInfo.room_id, BuildingInfo.class);//宿舍信息表
+        Cron4jPlugin cp = new Cron4jPlugin(PropKit.use("task.properties"));
+        arg0.add(cp);
 	}
 
 	@Override

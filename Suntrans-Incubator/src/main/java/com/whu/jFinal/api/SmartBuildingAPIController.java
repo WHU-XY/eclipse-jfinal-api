@@ -140,6 +140,7 @@ public class SmartBuildingAPIController extends BaseAPIController {
 		});
 		response.setInfo(list);
 		response.setMessage("Inquiry_Index success");
+		response.setCount(list.size());
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
@@ -194,10 +195,10 @@ public class SmartBuildingAPIController extends BaseAPIController {
 		});
 		response.setInfo(list);
 		response.setMessage("Inquiry_Controll_DevInfo success");
+		response.setCount(list.size());
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
-
 
 	public void Inquiry_Environment_Index() {
 
@@ -239,10 +240,10 @@ public class SmartBuildingAPIController extends BaseAPIController {
 							dev.set("wendu", rs.getString(8)+"℃");
 							dev.set("shidu", rs.getString(9)+"%Rh");
 							dev.set("renyuan", rs.getString(10));
-							dev.set("x-zhou", rs.getString(11));
-							dev.set("y-zhou", rs.getString(12));
-							dev.set("z-zhou", rs.getString(13));
-							dev.set("zhengdong", rs.getString(14));
+							dev.set("x_zhou", rs.getString(11));
+							dev.set("y_zhou", rs.getString(12));
+							dev.set("z_zhou", rs.getString(13));
+							dev.set("zhendong", rs.getString(14));
 							dev.set("guangzhao", rs.getString(15));
 							dev.set("daqiya", rs.getString(16)+"KPa");
 							list.add(dev);
