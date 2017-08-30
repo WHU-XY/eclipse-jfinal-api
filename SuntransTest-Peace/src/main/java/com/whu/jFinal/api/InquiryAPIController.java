@@ -110,7 +110,7 @@ public class InquiryAPIController extends BaseAPIController {
 				return null;
 			}
 		});		
-		String sql = "SELECT a.room_id,a.dormitory FROM stp_roominfo as a where a.departmentID=? and a.building=? and a.floor=?";
+		String sql = "SELECT a.room_id,a.dormitory FROM stp_roominfo as a where a.departmentID=? and a.building=? and a.floor=? order by a.dormitory";
 		List<Record> roomlist=null;
 		for(int i=0;i<list.size();i++) {
 			roomlist=Db.find(sql,list.get(i).getInt("departmentID"),list.get(i).getInt("building"),list.get(i).getInt("floor"));
@@ -375,7 +375,7 @@ public class InquiryAPIController extends BaseAPIController {
 				// TODO Auto-generated method stub
 				CallableStatement proc = null;
 				try {
-					proc = arg0.prepareCall("{call inquiry_room_info(?,?,?)}");
+					proc = arg0.prepareCall("{call inquiry_student_info(?,?,?)}");
 					proc.setString(1, departmentID);
 					proc.setString(2, building);
 					proc.setString(3, floor);
@@ -385,11 +385,12 @@ public class InquiryAPIController extends BaseAPIController {
 
 						while (rs != null && rs.next()) {
 							Record dev = new Record();
-							dev.set("departmentName", rs.getString(1));
-							dev.set("building", rs.getString(2));
-							dev.set("floor", rs.getString(3));
-							dev.set("dormitory", rs.getString(4));
-							dev.set("room_id", rs.getInt(5));
+							dev.set("departmentID", rs.getInt(1));
+							dev.set("departmentName", rs.getString(2));
+							dev.set("building", rs.getString(3));
+							dev.set("floor", rs.getString(4));
+							dev.set("dormitory", rs.getString(5));
+							dev.set("room_id", rs.getInt(6));
 							list.add(dev);
 						}
 						hadResults = proc.getMoreResults();
@@ -415,7 +416,7 @@ public class InquiryAPIController extends BaseAPIController {
 			list.get(i).set("sublist", student);
 		}
 		response.setInfo(list);
-		response.setMessage("Inquiry_Room_Info success");
+		response.setMessage("Inquiry_Student_Info success");
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
@@ -433,7 +434,7 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT a.studentID,a.academy,a.major,a.telephone FROM stp_hp_student as a where a.studentID=?";
+		String sql = "SELECT a.studentID,a.academy,a.major,a.telephone,a.departmentID,a.building,a.dormitory FROM stp_hp_student as a where a.studentID=?";
 		List<Record> nowBuilding = Db.find(sql,studentID);
 		InquiryDBResponse response = new InquiryDBResponse();
 		if (nowBuilding == null) {
@@ -446,7 +447,7 @@ public class InquiryAPIController extends BaseAPIController {
 		renderJson(response);
 
 	}
- 
+  
 	/*	public void Inquiry_UserInfo() {
 
 		String student_id = getPara("student_id");

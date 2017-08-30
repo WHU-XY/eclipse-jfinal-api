@@ -1304,9 +1304,9 @@ footer {
 	<ul>
 		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
 		<li>departmentName：学部名</li>
-		<li>sublist：子list</li>
 		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
 		<li>floor: 楼层</li>
+		<li>sublist：子list</li>
 		<li>room_id: 寝室ID</li>
 		<li>dormitory: 寝室号</li>
 	</ul>
@@ -1710,6 +1710,435 @@ footer {
 </code>
 	</pre>
 	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>查询电量信息（功率、电量、电压、电流、功率因数、用电量）
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Ammeter_History
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>room_id</strong>:宿舍号(必填项)</li>
+		<li><strong>data_type</strong>:数据类型(必填项)，1：电压；2：电流；3：功率；4：功率因数；5：电表值；6：用电量</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>day_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<p>
+		<strong>week_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<p>
+		<strong>month_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "day_data": [
+        {
+            "update_time": "2017-08-30 16:01:00",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-30 15:01:00",
+            "data": "0.000",
+            "x": 2
+        },
+        {
+            "update_time": "2017-08-30 14:01:00",
+            "data": "0.000",
+            "x": 3
+        },
+        {
+            "update_time": "2017-08-30 13:01:00",
+            "data": "0.000",
+            "x": 4
+        },
+        {
+            "update_time": "2017-08-30 12:01:00",
+            "data": "0.000",
+            "x": 5
+        },
+        {
+            "update_time": "2017-08-30 11:01:00",
+            "data": "0.000",
+            "x": 6
+        },
+        {
+            "update_time": "2017-08-30 10:01:00",
+            "data": "0.000",
+            "x": 7
+        },
+        {
+            "update_time": "2017-08-30 09:01:00",
+            "data": "0.000",
+            "x": 8
+        },
+        {
+            "update_time": "2017-08-30 08:01:00",
+            "data": "0.000",
+            "x": 9
+        },
+        {
+            "update_time": "2017-08-30 07:01:00",
+            "data": "0.000",
+            "x": 10
+        },
+        {
+            "update_time": "2017-08-30 06:01:00",
+            "data": "0.000",
+            "x": 11
+        },
+        {
+            "update_time": "2017-08-30 05:01:00",
+            "data": "0.000",
+            "x": 12
+        },
+        {
+            "update_time": "2017-08-30 04:01:00",
+            "data": "0.000",
+            "x": 13
+        },
+        {
+            "update_time": "2017-08-30 03:01:00",
+            "data": "0.000",
+            "x": 14
+        },
+        {
+            "update_time": "2017-08-30 02:01:00",
+            "data": "0.000",
+            "x": 15
+        },
+        {
+            "update_time": "2017-08-30 01:01:00",
+            "data": "0.000",
+            "x": 16
+        },
+        {
+            "update_time": "2017-08-30 00:01:00",
+            "data": "0.000",
+            "x": 17
+        },
+        {
+            "update_time": "2017-08-29 23:01:00",
+            "data": "0.000",
+            "x": 18
+        },
+        {
+            "update_time": "2017-08-29 22:01:00",
+            "data": "0.000",
+            "x": 19
+        },
+        {
+            "update_time": "2017-08-29 21:01:00",
+            "data": "0.000",
+            "x": 20
+        },
+        {
+            "update_time": "2017-08-29 20:01:00",
+            "data": "0.000",
+            "x": 21
+        },
+        {
+            "update_time": "2017-08-29 19:01:00",
+            "data": "0.000",
+            "x": 22
+        },
+        {
+            "update_time": "2017-08-29 18:01:00",
+            "data": "0.000",
+            "x": 23
+        },
+        {
+            "update_time": "2017-08-29 17:01:00",
+            "data": "0.000",
+            "x": 24
+        }
+    ],
+    "message": "Inquiry_Ammeter_History success",
+    "week_data": [
+        {
+            "update_time": "2017-08-30 00:01:00.0",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-29 00:01:00.0",
+            "data": "0.000",
+            "x": 2
+        }
+    ],
+    "month_data": [
+        {
+            "update_time": "2017-08-30 00:01:00.0",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-29 00:01:00.0",
+            "data": "0.000",
+            "x": 2
+        }
+    ]
+}
+</code>
+	</pre>
+	
+		<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询学生信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Student_Info
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>departmentID</strong>:学部ID(必填项)，1代表工学部，2代表文理学部</li>
+		<li><strong>building</strong>:宿舍楼(必填项)，1代表1舍，2代表2舍</li>
+		<li><strong>floor</strong>:楼层(必填项)，0代表所有楼层，1代表1层，2代表2层</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>departmentName：学部名</li>
+		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
+		<li>floor: 楼层</li>
+		<li>room_id: 寝室ID</li>
+		<li>dormitory: 寝室号</li>
+		<li>sublist：子list</li>
+		<li>studentID: 学号</li>
+		<li>name: 姓名</li>
+		<li>academy: 学院</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_Student_Info success",
+    "info": [
+        {
+            "departmentName": "工学部",
+            "room_id": 1,
+            "sublist": [
+                {
+                    "studentID": 2013301470027,
+                    "name": "王晓青",
+                    "academy": "动力与机械学院"
+                },
+                {
+                    "studentID": null,
+                    "name": "ss",
+                    "academy": null
+                },
+                {
+                    "studentID": 1,
+                    "name": "bb",
+                    "academy": "1"
+                },
+                {
+                    "studentID": null,
+                    "name": "cc",
+                    "academy": null
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "101",
+            "floor": "1",
+            "building": "1"
+        },
+        {
+            "departmentName": "工学部",
+            "room_id": 8,
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "102",
+            "floor": "1",
+            "building": "1"
+        },
+        {
+            "departmentName": "工学部",
+            "room_id": 5,
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "103",
+            "floor": "1",
+            "building": "1"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>通过学号查询学生详细信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Student_Detail_BySid
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>studentID</strong>:学号(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>studentID: 学号</li>
+		<li>major: 专业</li>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>floor: 楼层</li>
+		<li>dormitory: 寝室号</li>
+		<li>academy: 学院</li>
+		<li>telephone: 手机号</li>
+		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_Student_Detail_BySid Success",
+    "info": [
+        {
+            "studentID": 2013301470027,
+            "major": "11",
+            "departmentID": 1,
+            "dormitory": 507,
+            "telephone": 13247128702,
+            "academy": "动力与机械学院",
+            "floor": 5
+            "building": 1
+        }
+    ]
+}
+</code>
+	</pre>
 	<!-- <footer
 		style="position: fixed; font-size: .8em; text-align: right; bottom: 0px; margin-left: -25px; height: 20px; width: 100%;">
 		generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a>
