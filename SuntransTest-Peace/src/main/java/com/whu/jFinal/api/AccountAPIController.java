@@ -3,6 +3,7 @@ package com.whu.jFinal.api;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.common.Require;
 import com.whu.jFinal.common.token.TokenManager;
@@ -188,12 +189,21 @@ public class AccountAPIController extends BaseAPIController {
              renderJson(response);
              return;
         }
+        
+        String token = TokenManager.getMe().generateToken(nowUser);
+        
+        if(Db.find("SELECT *FROM stp_api_user_token WHERE username=? ",nowUser.getStr("username"))==null) {
+        	Record usertoken = new Record().set("username", nowUser.getStr("username")).set("token", token);
+        	Db.save("stp_api_user_token", usertoken);
+        }else {
+        	Db.update("UPDATE stp_api_user_token set token=? where username=?", token,nowUser.getStr("username"));
+        }
         Map<String, Object> userInfo = new HashMap<String, Object>(nowUser.getAttrs());
         userInfo.remove(PASSWORD);
         userInfo.remove("salt");
         response.setInfo(userInfo);
         response.setMessage("login success");
-        response.setToken(TokenManager.getMe().generateToken(nowUser));
+        response.setToken(token);
         renderJson(response);
     }
 

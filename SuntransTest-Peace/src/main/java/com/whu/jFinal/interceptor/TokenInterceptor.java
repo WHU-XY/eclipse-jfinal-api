@@ -3,6 +3,8 @@ package com.whu.jFinal.interceptor;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.whu.jFinal.bean.Code;
 import com.whu.jFinal.common.token.TokenManager;
 import com.whu.jFinal.model.User;
@@ -23,7 +25,11 @@ public class TokenInterceptor implements Interceptor {
             controller.renderJson(new BaseResponse(Code.ARGUMENT_ERROR, "token can not be null"));
             return;
         }
-
+        if(Db.findFirst("SELECT *FROM stp_api_user_token WHERE token=? ", token)==null) {
+        	 controller.renderJson(new BaseResponse(Code.TOKEN_INVALID, "token is invalid"));
+             return;
+        }
+        
         User user = TokenManager.getMe().validate(token);
         if (user == null) {
             controller.renderJson(new BaseResponse(Code.TOKEN_INVALID, "token is invalid"));

@@ -6,6 +6,8 @@ package com.whu.jFinal.common.token;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.whu.jFinal.model.User;
 import com.whu.jFinal.utils.TokenUtil;
 
