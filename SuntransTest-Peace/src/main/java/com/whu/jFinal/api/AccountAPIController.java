@@ -192,11 +192,11 @@ public class AccountAPIController extends BaseAPIController {
         
         String token = TokenManager.getMe().generateToken(nowUser);
         
-        if(Db.find("SELECT *FROM stp_api_user_token WHERE username=? ",nowUser.getStr("username"))==null) {
-        	Record usertoken = new Record().set("username", nowUser.getStr("username")).set("token", token);
+        if(Db.find("SELECT *FROM stp_api_user_token WHERE username=?",username).isEmpty()) {
+        	Record usertoken = new Record().set("username", username).set("token", token);
         	Db.save("stp_api_user_token", usertoken);
         }else {
-        	Db.update("UPDATE stp_api_user_token set token=? where username=?", token,nowUser.getStr("username"));
+        	Db.update("UPDATE stp_api_user_token set token=? where username=?", token,username);
         }
         Map<String, Object> userInfo = new HashMap<String, Object>(nowUser.getAttrs());
         userInfo.remove(PASSWORD);
