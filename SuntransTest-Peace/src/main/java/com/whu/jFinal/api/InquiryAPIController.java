@@ -31,10 +31,10 @@ public class InquiryAPIController extends BaseAPIController {
 		List<Record> floor=null;
 		for(int i=0;i<area.size();i++) {
 		
-			String sql1 = "SELECT distinct a.building FROM stp_roominfo as a where a.departmentID=?";
+			String sql1 = "SELECT distinct a.building,a.building_name FROM stp_roominfo as a where a.departmentID=?";
 			building = Db.find(sql1,area.get(i).getInt("departmentID"));
 			for(int j=0;j<building.size();j++) {
-				String sql2 = "SELECT distinct a.floor FROM stp_roominfo as a where a.departmentID=? and a.building=?";
+				String sql2 = "SELECT distinct a.floor,a.floor_name FROM stp_roominfo as a where a.departmentID=? and a.building=?";
 				floor = Db.find(sql2,area.get(i).getInt("departmentID"),building.get(j).getInt("building"));
 				building.get(j).set("sublist", floor);
 			}
@@ -91,7 +91,9 @@ public class InquiryAPIController extends BaseAPIController {
 							dev.set("departmentID", rs.getInt(1));
 							dev.set("departmentName", rs.getString(2));
 							dev.set("building", rs.getInt(3));
-							dev.set("floor", rs.getInt(4));
+							dev.set("building_name", rs.getString(4));
+							dev.set("floor", rs.getInt(5));
+							dev.set("floor_name", rs.getString(6));
 							list.add(dev);
 						}
 						hadResults = proc.getMoreResults();
@@ -137,7 +139,8 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT a.id,a.balans FROM stp_rooms as a where a.id=?";
+		String sql = "SELECT a.id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse FROM stp_rooms as a,stp_api_ammeter_this_day_data as b,"
+				+ "stp_api_ammeter_this_month_data as c where a.id=b.room_id and b.room_id=c.room_id and c.room_id=?";
 		nowRoom = Db.find(sql,room_id);
 		
 		String sql1 = "SELECT b.id,b.num,b.name,b.status FROM stp_slc_channel as b where b.slc_id=?";
@@ -155,7 +158,6 @@ public class InquiryAPIController extends BaseAPIController {
 			renderJson(response);
 			return;
 		}
-		
 		response.setaccount(nowRoom);
 		response.setdev_channel(nowRoom1);
 		response.setmeter_info(nowRoom2);
@@ -181,7 +183,8 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT b.room_id,a.balans FROM stp_rooms as a,stp_hp_student as b where a.id=b.room_id and b.studentID=?";
+		String sql = "SELECT d.room_id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse FROM stp_rooms as a,stp_hp_student as d,"
+				+ "stp_api_ammeter_this_day_data as b,stp_api_ammeter_this_month_data as c where a.id=d.room_id and a.id=b.room_id and b.room_id=c.room_id and d.studentID=?";
 		nowRoom = Db.find(sql,studentID);
 		
 		String sql1 = "SELECT a.id,b.room_id,a.num,a.name,a.status FROM stp_slc_channel as a,stp_hp_student as b where a.slc_id=b.room_id and b.studentID=?";

@@ -1196,8 +1196,10 @@ footer {
 		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
 		<li>departmentName：学部名</li>
 		<li>sublist：子list</li>
-		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
-		<li>floor: 楼层</li>
+		<li>building: 宿舍楼ID</li>
+		<li>building_name: 宿舍楼名称</li>
+		<li>floor: 楼层ID</li>
+		<li>floor_name: 楼层名称</li>
 	</ul>
 	<h5 id="简要示例">
 		<a name="简要示例" href="#简要示例"></a>简要示例
@@ -1209,7 +1211,6 @@ footer {
     &quot;message&quot;: &quot;registered&quot;
 }
 </code></pre>">{
-    {
     "code": 1,
     "message": "Inquiry_Department_Info Success",
     "info": [
@@ -1217,11 +1218,14 @@ footer {
             "departmentName": "工学部",
             "sublist": [
                 {
+                    "building_name": "1舍",
                     "sublist": [
                         {
+                            "floor_name": "2层",
                             "floor": 2
                         },
                         {
+                            "floor_name": "1层",
                             "floor": 1
                         }
                     ],
@@ -1234,16 +1238,20 @@ footer {
             "departmentName": "文理学部",
             "sublist": [
                 {
+                    "building_name": "2舍",
                     "sublist": [
                         {
+                            "floor_name": "2层",
                             "floor": 2
                         }
                     ],
                     "building": 2
                 },
                 {
+                    "building_name": "1舍",
                     "sublist": [
                         {
+                            "floor_name": "1层",
                             "floor": 1
                         }
                     ],
@@ -1251,9 +1259,44 @@ footer {
                 }
             ],
             "departmentID": 2
+        },
+        {
+            "departmentName": "文理学部",
+            "sublist": [
+                {
+                    "building_name": "2舍",
+                    "sublist": [
+                        {
+                            "floor_name": null,
+                            "floor": 0
+                        }
+                    ],
+                    "building": 2
+                },
+                {
+                    "building_name": "3舍",
+                    "sublist": [
+                        {
+                            "floor_name": null,
+                            "floor": 0
+                        }
+                    ],
+                    "building": 3
+                },
+                {
+                    "building_name": "4舍",
+                    "sublist": [
+                        {
+                            "floor_name": null,
+                            "floor": 0
+                        }
+                    ],
+                    "building": 4
+                }
+            ],
+            "departmentID": 0
         }
     ]
-}
 }
 </code>
 	</pre>
@@ -1282,8 +1325,8 @@ footer {
 	<ul>
 		<li><strong>token</strong>:令牌符(必填项)</li>
 		<li><strong>departmentID</strong>:学部ID(必填项)，1代表工学部，2代表文理学部</li>
-		<li><strong>building</strong>:宿舍楼(必填项)，1代表1舍，2舍代表2舍</li>
-		<li><strong>floor</strong>:楼层(必填项)，0代表所有楼层，1代表1层，2代表2层</li>
+		<li><strong>building</strong>:宿舍楼ID</li>
+		<li><strong>floor</strong>:楼层ID</li>
 	</ul>
 	<h4 id="响应">
 		<a name="响应" href="#响应"></a>响应
@@ -1304,8 +1347,10 @@ footer {
 	<ul>
 		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
 		<li>departmentName：学部名</li>
-		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
-		<li>floor: 楼层</li>
+		<li>building: 宿舍楼ID</li>
+		<li>building_name: 宿舍楼名称</li>
+		<li>floor: 楼层ID</li>
+		<li>floor_name: 楼层名称</li>
 		<li>sublist：子list</li>
 		<li>room_id: 寝室ID</li>
 		<li>dormitory: 寝室号</li>
@@ -1325,17 +1370,19 @@ footer {
     "info": [
         {
             "departmentName": "工学部",
+            "floor_name": "2层",
+            "building_name": "1舍",
             "sublist": [
+                {
+                    "room_id": 6,
+                    "dormitory": 201
+                },
                 {
                     "room_id": 2,
                     "dormitory": 202
                 },
                 {
-                    "room_id": 0,
-                    "dormitory": 201
-                },
-                {
-                    "room_id": 0,
+                    "room_id": 7,
                     "dormitory": 203
                 }
             ],
@@ -1345,18 +1392,20 @@ footer {
         },
         {
             "departmentName": "工学部",
+            "floor_name": "1层",
+            "building_name": "1舍",
             "sublist": [
                 {
                     "room_id": 1,
                     "dormitory": 101
                 },
                 {
-                    "room_id": 0,
-                    "dormitory": 103
+                    "room_id": 8,
+                    "dormitory": 102
                 },
                 {
-                    "room_id": 0,
-                    "dormitory": 102
+                    "room_id": 5,
+                    "dormitory": 103
                 }
             ],
             "departmentID": 1,
@@ -1413,6 +1462,9 @@ footer {
 	<ul>
 		<li>id：账户id</li>
 		<li>balans：账户余额</li>
+		<li>status：账户状态</li>
+		<li>dayuse：当天用电量</li>
+		<li>monthuse：当月用电量</li>
 	</ul>
 	<p>
 		<strong>dev_channel节点说明</strong>：
@@ -1467,10 +1519,10 @@ footer {
             "academy": null
         },
         {
-            "studentID": null,
+            "studentID": 1,
             "name": "bb",
             "telephone": null,
-            "academy": null
+            "academy": "1"
         },
         {
             "studentID": null,
@@ -1484,7 +1536,7 @@ footer {
             "PR_value": 1,
             "E_value": 0,
             "I_value": 0,
-            "V_value": 227.7,
+            "V_value": 240.7,
             "P_value": 0,
             "id": 1
         }
@@ -1495,7 +1547,7 @@ footer {
             "num": 1,
             "name": "照明",
             "id": 1,
-            "status": true
+            "status": false
         },
         {
             "num": 2,
@@ -1532,7 +1584,10 @@ footer {
     "account": [
         {
             "id": 1,
-            "balans": 100
+            "monthuse": 0,
+            "balans": 2,
+            "status": 0,
+            "dayuse": 0
         }
     ]
 }
@@ -1584,6 +1639,9 @@ footer {
 	<ul>
 		<li>id：账户id</li>
 		<li>balans：账户余额</li>
+		<li>status：账户状态</li>
+		<li>dayuse：当天用电量</li>
+		<li>monthuse：当月用电量</li>
 	</ul>
 	<p>
 		<strong>dev_channel节点说明</strong>：
@@ -1703,7 +1761,11 @@ footer {
     "account": [
         {
             "id": 1,
-            "balans": 100
+            "monthuse": 0,
+            "balans": 2,
+            "status": 0,
+            "dayuse": 0
+            
         }
     ]
 }
