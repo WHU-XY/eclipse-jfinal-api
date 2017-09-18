@@ -51,8 +51,8 @@ public class TokenManager {
      */
     public String generateToken(User user) {
         String token = TokenUtil.generateToken();
-        userToken.put(user.getStr(User.USER_ID), token);
-        tokens.put(token, user);
+        //userToken.put(user.getStr(User.USER_ID), token);
+        //tokens.put(token, user);
         return token;
     }
 }

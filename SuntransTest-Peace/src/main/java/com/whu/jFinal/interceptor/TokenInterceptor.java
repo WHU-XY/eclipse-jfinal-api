@@ -30,13 +30,13 @@ public class TokenInterceptor implements Interceptor {
              return;
         }
         
-        User user = TokenManager.getMe().validate(token);
+       /* User user = TokenManager.getMe().validate(token);
         if (user == null) {
             controller.renderJson(new BaseResponse(Code.TOKEN_INVALID, "token is invalid"));
             return;
         }
         
-        controller.setAttr("user", user);
+        controller.setAttr("user", user);*/
         ai.invoke();
     }
 }

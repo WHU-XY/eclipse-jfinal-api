@@ -145,7 +145,7 @@ public class AccountAPIController extends BaseAPIController {
 		String userId = RandomUtils.randomCustomUUID();
 		String salt = SMSUtils.randomSMSCode(6);
 		new User()
-                .set("userId", userId)
+                .set("userId", 0)
                 .set(User.TEL_NUM, tel_num)
                 .set(User.PASSWORD, StringUtils.encodePassword(salt+password, "md5"))
                 .set(User.USERNAME, username)

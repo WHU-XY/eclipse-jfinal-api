@@ -1465,6 +1465,7 @@ footer {
 		<li>status：账户状态</li>
 		<li>dayuse：当天用电量</li>
 		<li>monthuse：当月用电量</li>
+		<li>totaluse：总用电量</li>
 	</ul>
 	<p>
 		<strong>dev_channel节点说明</strong>：
@@ -1507,24 +1508,6 @@ footer {
 </code></pre>">{
     "room_stu": [
         {
-            "studentID": 2013301470027,
-            "name": "王晓青",
-            "telephone": 13247128702,
-            "academy": "动力与机械学院"
-        },
-        {
-            "studentID": null,
-            "name": "ss",
-            "telephone": null,
-            "academy": null
-        },
-        {
-            "studentID": 1,
-            "name": "bb",
-            "telephone": null,
-            "academy": "1"
-        },
-        {
             "studentID": null,
             "name": "cc",
             "telephone": null,
@@ -1533,12 +1516,34 @@ footer {
     ],
     "meter_info": [
         {
-            "PR_value": 1,
-            "E_value": 0,
-            "I_value": 0,
-            "V_value": 240.7,
-            "P_value": 0,
-            "id": 1
+            "unit": "V",
+            "name": "电压",
+            "id": 1,
+            "value": "240.7"
+        },
+        {
+            "unit": "A",
+            "name": "电流",
+            "id": 2,
+            "value": "0.00"
+        },
+        {
+            "unit": "KW",
+            "name": "功率",
+            "id": 3,
+            "value": "0.000"
+        },
+        {
+            "unit": "",
+            "name": "功率因数",
+            "id": 4,
+            "value": "1.000"
+        },
+        {
+            "unit": "度",
+            "name": "电表值",
+            "id": 5,
+            "value": "0.000"
         }
     ],
     "code": 1,
@@ -1583,6 +1588,7 @@ footer {
     "message": "Inquiry_RoomDetail_RoomId Success",
     "account": [
         {
+            "totaluse": null,
             "id": 1,
             "monthuse": 0,
             "balans": 2,
@@ -1618,7 +1624,7 @@ footer {
 	</h4>
 	<ul>
 		<li><strong>token</strong>:令牌符(必填项)</li>
-		<li><strong>username</strong>:用户名，即学号(必填项)</li>
+		<li><strong>studentID</strong>:学号(必填项)</li>
 	</ul>
 	<h4 id="响应">
 		<a name="响应" href="#响应"></a>响应
@@ -1642,6 +1648,7 @@ footer {
 		<li>status：账户状态</li>
 		<li>dayuse：当天用电量</li>
 		<li>monthuse：当月用电量</li>
+		<li>totaluse：总用电量</li>
 	</ul>
 	<p>
 		<strong>dev_channel节点说明</strong>：
@@ -1684,24 +1691,6 @@ footer {
 </code></pre>">{
     "room_stu": [
         {
-            "studentID": 2013301470027,
-            "name": "王晓青",
-            "telephone": 13247128702,
-            "academy": "动力与机械学院"
-        },
-        {
-            "studentID": null,
-            "name": "ss",
-            "telephone": null,
-            "academy": null
-        },
-        {
-            "studentID": null,
-            "name": "bb",
-            "telephone": null,
-            "academy": null
-        },
-        {
             "studentID": null,
             "name": "cc",
             "telephone": null,
@@ -1710,12 +1699,34 @@ footer {
     ],
     "meter_info": [
         {
-            "PR_value": 1,
-            "E_value": 0,
-            "I_value": 0,
-            "V_value": 227.7,
-            "P_value": 0,
-            "id": 1
+            "unit": "V",
+            "name": "电压",
+            "id": 1,
+            "value": "240.7"
+        },
+        {
+            "unit": "A",
+            "name": "电流",
+            "id": 2,
+            "value": "0.00"
+        },
+        {
+            "unit": "KW",
+            "name": "功率",
+            "id": 3,
+            "value": "0.000"
+        },
+        {
+            "unit": "",
+            "name": "功率因数",
+            "id": 4,
+            "value": "1.000"
+        },
+        {
+            "unit": "度",
+            "name": "电表值",
+            "id": 5,
+            "value": "0.000"
         }
     ],
     "code": 1,
@@ -1724,7 +1735,7 @@ footer {
             "num": 1,
             "name": "照明",
             "id": 1,
-            "status": true
+            "status": false
         },
         {
             "num": 2,
@@ -1760,12 +1771,12 @@ footer {
     "message": "Inquiry_RoomDetail_RoomId Success",
     "account": [
         {
+            "totaluse": null,
             "id": 1,
             "monthuse": 0,
             "balans": 2,
             "status": 0,
             "dayuse": 0
-            
         }
     ]
 }
@@ -2196,6 +2207,267 @@ footer {
             "academy": "动力与机械学院",
             "floor": 5
             "building": 1
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询楼栋三相电表信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_3Ammeter_Current
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>departmentID</strong>:学部ID(必填项)</li>
+		<li><strong>building</strong>:宿舍楼ID(必填项)</li>
+		<li><strong>floor</strong>:楼层ID(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>aV_value: a相电压</li>
+		<li>bV_value: b相电压</li>
+		<li>cV_value：c相电压</li>
+		<li>aA_value: a相电流</li>
+		<li>bA_value: b相电流</li>
+		<li>cA_value: c相电流</li>
+		<li>aP_value: 有功功率</li>
+		<li>rP_value: 无功功率</li>
+		<li>E_value: 总用电量</li>
+		<li>E_day_value: 本日用电量</li>
+		<li>E_month_value: 本月用电量</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_3Ammeter_Current Success",
+    "info": [
+        {
+            "cV_value": "1.0V",
+            "bA_value": "1.23A",
+            "rP_value": "1.0W",
+            "PR_value": 1,
+            "E_value": "5.01KW.H",
+            "bV_value": "1.1V",
+            "aA_value": "1.0A",
+            "cA_value": "1.0A",
+            "aV_value": "1.1V",
+            "E_day_value": "1.0KW.H",
+            "aP_value": "1.22W",
+            "E_month_value": "5.0KW.H"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>用户(学生或者管理员)通过用户名查询个人信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_StudentInfo_Byusername
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>username</strong>:用户名(必填项)</li>
+		<li><strong>role</strong>:角色(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明（学生）</strong>：
+	</p>
+	<ul>
+		<li>studentID: 学号</li>
+		<li>room_id: 宿舍房间ID</li>
+		<li>IDnumber:身份证号</li>
+		<li>major: 专业</li>
+		<li>name: 姓名</li>
+		<li>academy: 学院</li>
+		<li>telephone: 电话号码</li>
+		
+	</ul>
+	<p>
+		<strong>info节点说明（管理员）</strong>：
+	</p>
+	<ul>
+		<li>sex: 性别，0男性，1女性</li>
+		<li>tel_num: 手机号</li>
+		<li>email: 邮箱</li>
+		<li>username: 用户名</li>
+		<li>status: 账号状态，1正常，0停用</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_StudentInfo_Byusername Success",
+    "info": [
+        {
+            "studentID": 2013301470027,
+            "room_id": 21,
+            "IDnumber": 0,
+            "major": "66",
+            "name": "王晓青",
+            "telephone": 0,
+            "academy": "动力与机械学院"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>学生用户通过房间ID查询操作日志
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Channel_Control_Log
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>room_id</strong>:房间ID(必填项)</li>
+		<li><strong>inquirytime</strong>:查询时间，格式yyyy-MM-dd，比如要查询2017年7月份的则为2017-07-01，八月为2017-08-01</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>user_id: 用户id</li>
+		<li>port: 通道号</li>
+		<li>name: 名字</li>
+		<li>created_at: 时间</li>
+		<li>message: 操作信息</li>
+		<li>status: 操作动作（打开或者关闭）</li>
+	</ul>
+	<p>
+		<strong>name+created_at+message构成完整信息</strong>：
+	</p>
+	
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_StudentInfo_Byusername Success",
+    "info": [
+        {
+            "user_id": 123,
+            "port": 1,
+            "name": null,
+            "created_at": "2017-07-07 09:50:47",
+            "message": "关闭了照明开关",
+            "status": false
         }
     ]
 }

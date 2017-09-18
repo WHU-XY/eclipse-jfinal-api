@@ -4,7 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.jfinal.aop.Before;
@@ -34,7 +39,7 @@ public class InquiryAPIController extends BaseAPIController {
 			String sql1 = "SELECT distinct a.building,a.building_name FROM stp_roominfo as a where a.departmentID=?";
 			building = Db.find(sql1,area.get(i).getInt("departmentID"));
 			for(int j=0;j<building.size();j++) {
-				String sql2 = "SELECT distinct a.floor,a.floor_name FROM stp_roominfo as a where a.departmentID=? and a.building=?";
+				String sql2 = "SELECT distinct a.floor,a.floor_name FROM stp_roominfo as a where a.departmentID=? and a.building=? order by a.floor asc";
 				floor = Db.find(sql2,area.get(i).getInt("departmentID"),building.get(j).getInt("building"));
 				building.get(j).set("sublist", floor);
 			}
@@ -132,18 +137,17 @@ public class InquiryAPIController extends BaseAPIController {
 		List<Record> nowRoom1;
 		List<Record> nowRoom2;
 		List<Record> nowRoom3;
-
 		if (!notNull(Require.me()
 				.put(room_id,"room_id can not be null")))
 		{
 			return;
 		}
 		
-		String sql = "SELECT a.id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse FROM stp_rooms as a,stp_api_ammeter_this_day_data as b,"
+		String sql = "SELECT a.id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse,c.E_value as totaluse FROM stp_rooms as a,stp_api_ammeter_this_day_data as b,"
 				+ "stp_api_ammeter_this_month_data as c where a.id=b.room_id and b.room_id=c.room_id and c.room_id=?";
 		nowRoom = Db.find(sql,room_id);
 		
-		String sql1 = "SELECT b.id,b.num,b.name,b.status FROM stp_slc_channel as b where b.slc_id=?";
+		String sql1 = "SELECT b.id,b.num,b.name,b.status,c.addr FROM stp_slc_channel as b,stp_slc as c where b.slc_id=? and c.room_id=b.slc_id";
 		nowRoom1 = Db.find(sql1,room_id);
 		
 		String sql2 = "SELECT a.id,a.V_value,a.I_value,a.P_value,a.PR_value,a.E_value FROM stp_electricity_current as a where a.room_id=?";
@@ -158,9 +162,37 @@ public class InquiryAPIController extends BaseAPIController {
 			renderJson(response);
 			return;
 		}
+		
+		List<Record> list = new ArrayList<>();
+		for(int i=0;i<5;i++) {
+			Record info = new Record();
+			if(i==0) {
+				info.set("name", "电压");
+				info.set("unit","V");
+				info.set("value",nowRoom2.get(0).get("V_value").toString());
+			}else if(i==1) {
+				info.set("name", "电流");
+				info.set("unit","A");
+				info.set("value",nowRoom2.get(0).get("I_value").toString());
+			}else if(i==2) {
+				info.set("name", "功率");
+				info.set("unit","KW");
+				info.set("value",nowRoom2.get(0).get("P_value").toString());
+			}else if(i==3) {
+				info.set("name", "功率因数");
+				info.set("unit","");
+				info.set("value",nowRoom2.get(0).get("PR_value").toString());
+			}else if(i==4) {
+				info.set("name", "电表值");
+				info.set("unit","度");
+				info.set("value",nowRoom2.get(0).get("E_value").toString());
+			}
+			info.set("data_type",i+1);
+			list.add(info);
+		}
 		response.setaccount(nowRoom);
 		response.setdev_channel(nowRoom1);
-		response.setmeter_info(nowRoom2);
+		response.setmeter_info(list);
 		response.setroom_stu(nowRoom3);
 		
 		response.setMessage("Inquiry_RoomDetail_RoomId Success");
@@ -171,7 +203,7 @@ public class InquiryAPIController extends BaseAPIController {
 	@Clear
 	public void Inquiry_Room_Detail_Bysid() {
 
-		String studentID = getPara("username");
+		String studentID = getPara("studentID");
 		List<Record> nowRoom;
 		List<Record> nowRoom1;
 		List<Record> nowRoom2;
@@ -183,11 +215,11 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT d.room_id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse FROM stp_rooms as a,stp_hp_student as d,"
+		String sql = "SELECT d.room_id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse,c.E_value as totaluse FROM stp_rooms as a,stp_hp_student as d,"
 				+ "stp_api_ammeter_this_day_data as b,stp_api_ammeter_this_month_data as c where a.id=d.room_id and a.id=b.room_id and b.room_id=c.room_id and d.studentID=?";
 		nowRoom = Db.find(sql,studentID);
 		
-		String sql1 = "SELECT a.id,b.room_id,a.num,a.name,a.status FROM stp_slc_channel as a,stp_hp_student as b where a.slc_id=b.room_id and b.studentID=?";
+		String sql1 = "SELECT a.id,b.room_id,a.num,a.name,a.status,c.addr FROM stp_slc_channel as a,stp_hp_student as b,stp_slc as c where a.slc_id=b.room_id and b.studentID=? and c.room_id=b.room_id";
 		nowRoom1 = Db.find(sql1,studentID);
 		
 		String sql2 = "SELECT a.id,b.room_id,a.V_value,a.I_value,a.P_value,a.PR_value,a.E_value FROM stp_electricity_current as a,stp_hp_student as b where a.room_id=b.room_id and b.studentID=?";
@@ -203,9 +235,37 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
+		List<Record> list = new ArrayList<>();
+		for(int i=0;i<5;i++) {
+			Record info = new Record();
+			if(i==0) {
+				info.set("name", "电压");
+				info.set("unit","V");
+				info.set("value",nowRoom2.get(0).get("V_value").toString());
+			}else if(i==1) {
+				info.set("name", "电流");
+				info.set("unit","A");
+				info.set("value",nowRoom2.get(0).get("I_value").toString());
+			}else if(i==2) {
+				info.set("name", "功率");
+				info.set("unit","KW");
+				info.set("value",nowRoom2.get(0).get("P_value").toString());
+			}else if(i==3) {
+				info.set("name", "功率因数");
+				info.set("unit","");
+				info.set("value",nowRoom2.get(0).get("PR_value").toString());
+			}else if(i==4) {
+				info.set("name", "用电量");
+				info.set("unit","度");
+				info.set("value",nowRoom2.get(0).get("E_value").toString());
+			}
+			info.set("data_type",i+1);
+			list.add(info);
+		}
+		
 		response.setaccount(nowRoom);
 		response.setdev_channel(nowRoom1);
-		response.setmeter_info(nowRoom2);
+		response.setmeter_info(list);
 		response.setroom_stu(nowRoom3);
 		
 		response.setMessage("Inquiry_RoomDetail_RoomId Success");
@@ -447,6 +507,232 @@ public class InquiryAPIController extends BaseAPIController {
 		}
 		response.setInfo(nowBuilding);
 		response.setMessage("Inquiry_Student_Detail_BySid Success");
+		renderJson(response);
+
+	}
+	
+	@Clear
+	public void Inquiry_3Ammeter_Current() {
+
+		String departmentID = getPara("departmentID");
+		String building = getPara("building");
+		String floor = getPara("floor");
+		if (!notNull(Require.me()
+				.put(departmentID,"departmentID can not be null")
+				.put(building,"building can not be null")
+				.put(floor,"floor can not be null")
+				))
+		{
+			return;
+		}
+		
+		List<Record> list = new ArrayList<>();
+		Db.execute(new ICallback() {
+			@Override
+			public Object call(Connection arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				CallableStatement proc = null;
+				try {
+					proc = arg0.prepareCall("{call inquiry_3ammeter_current(?,?,?)}");
+					proc.setString(1, departmentID);
+					proc.setString(2, building);
+					proc.setString(3, floor);
+					boolean hadResults = proc.execute();
+					while (hadResults) {
+						ResultSet rs = proc.getResultSet();
+						while (rs != null && rs.next()) {
+							Record dev = new Record();
+							dev.set("aV_value", rs.getFloat(1)+"V");
+							dev.set("bV_value", rs.getFloat(2)+"V");
+							dev.set("cV_value", rs.getFloat(3)+"V");
+							dev.set("aA_value", rs.getFloat(4)+"A");
+							dev.set("bA_value", rs.getFloat(5)+"A");
+							dev.set("cA_value", rs.getFloat(6)+"A");
+							dev.set("aP_value", rs.getFloat(7)+"W");
+							dev.set("rP_value", rs.getFloat(8)+"W");
+							dev.set("PR_value", rs.getFloat(9));
+							dev.set("E_value", rs.getFloat(10)+"KW.H");
+							dev.set("E_day_value", rs.getFloat(11)+"KW.H");
+							dev.set("E_month_value", rs.getFloat(12)+"KW.H");
+							list.add(dev);
+						}
+						hadResults = proc.getMoreResults();
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					if (proc != null) {
+						proc.close();
+					}
+					if (arg0 != null) {
+						arg0.close();
+					}
+				}
+				return null;
+			}
+		});
+		
+		InquiryDBResponse response = new InquiryDBResponse();
+		if (list.isEmpty()) {
+			response.setCode(Code.FAIL).setMessage("departmentID or building is error");
+			renderJson(response);
+			return;
+		}
+		response.setInfo(list);
+		response.setMessage("Inquiry_3Ammeter_Current Success");
+		renderJson(response);
+
+	}
+	
+	//仅限学生用户查询
+	@Clear
+	public void Inquiry_StudentInfo_Byusername() {
+
+		String username = getPara("username");
+		String role = getPara("role");
+		if (!notNull(Require.me()
+				.put(username,"username can not be null")
+				.put(role,"role can not be null")
+				))
+		{
+			return;
+		}
+		
+		List<Record> list = new ArrayList<>();
+		List<Record> list1 = new ArrayList<>();
+		if(role.equals("0")) {
+			String sql = "SELECT b.tel_num,b.username,b.sex,b.email,b.status from stp_api_user as b where b.username=?";
+	        list = Db.find(sql,username);
+		}else {	
+		Db.execute(new ICallback() {
+			@Override
+			public Object call(Connection arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				CallableStatement proc = null;
+				try {
+					proc = arg0.prepareCall("{call inquiry_studentinfo_byusername(?)}");
+					proc.setString(1, username);
+					boolean hadResults = proc.execute();
+					while (hadResults) {
+						ResultSet rs = proc.getResultSet();
+						while (rs != null && rs.next()) {
+							Record dev = new Record();
+							dev.set("studentID", rs.getLong(1));
+							dev.set("name", rs.getString(2));
+							dev.set("room_id", rs.getInt(3));
+							dev.set("academy", rs.getString(4));
+							dev.set("major", rs.getString(5));
+							dev.set("telephone", rs.getLong(6));
+							dev.set("IDnumber", rs.getString(7));
+							list1.add(dev);
+						}
+						hadResults = proc.getMoreResults();
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					if (proc != null) {
+						proc.close();
+					}
+					if (arg0 != null) {
+						arg0.close();
+					}
+				}
+				return null;
+			}
+		});
+		}
+		InquiryDBResponse response = new InquiryDBResponse();
+		if (list.isEmpty() && list1.isEmpty()) {
+			response.setCode(Code.FAIL).setMessage("username is error");
+			renderJson(response);
+			return;
+		}
+		if(role.equals("0")) {
+			response.setInfo(list);
+		}else {
+			response.setInfo(list1);
+		}
+		response.setMessage("Inquiry_StudentInfo_Byusername Success");
+		renderJson(response);
+
+	}
+	
+	
+	@Clear
+	public void Inquiry_Channel_Control_Log() {
+
+		String room_id = getPara("room_id");
+		String inquirytime = getPara("inquirytime");
+		if (!notNull(Require.me()
+				.put(room_id,"id can not be null")
+				.put(inquirytime,"month can not be null")
+				))
+		{
+			return;
+		}
+		
+
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+		Date date=null;
+		try {
+			date = df.parse(inquirytime);
+		}catch (ParseException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		cal.setTime(date);
+		cal.add(cal.MONTH, +1);
+		Date thedate= cal.getTime();
+		GregorianCalendar gclast = (GregorianCalendar) cal.getInstance();
+		gclast.setTime(thedate);
+		gclast.set(cal.DAY_OF_MONTH,1);
+		String day_first = df.format(gclast.getTime());
+		
+		
+		List<Record> list = new ArrayList<>();
+		String sql = "SELECT b.user_id,b.created_at,b.`port`,b.`status` from stp_slc_control_log as b where b.addr=addr and b.created_at>? and b.created_at<?";
+        list = Db.find(sql,inquirytime,day_first);
+		
+		List<Record> stuinfo;
+		String sql1 = "SELECT a.name,b.userId FROM stp_hp_student as a,stp_api_user as b where room_id=? and b.userId=? and a.studentID=b.studentID";
+		for(int i=0;i<list.size();i++) {
+			stuinfo = Db.find(sql1,room_id,list.get(i).get("user_id"));
+			if(stuinfo.size()==0) {
+				list.get(i).set("name",null);
+			}else {
+				list.get(i).set("name", stuinfo.get(0).get("name"));
+			}	
+		  if(list.get(i).getBoolean("status")) {
+			  	switch(list.get(i).getInt("port")) {
+		  			case 1:list.get(i).set("message","打开了照明开关");break;
+		  			case 2:list.get(i).set("message","打开了插座开关");break;
+		  			case 3:list.get(i).set("message","打开了阳台开关");break;
+		  			case 4:list.get(i).set("message","打开了洗手间开关");break;
+		  			default:list.get(i).set("message","打开了总开关");break;
+			  }   	
+		   }else {
+			   switch(list.get(i).getInt("port")) {
+				  case 1:list.get(i).set("message","关闭了照明开关");break;
+				  case 2:list.get(i).set("message","关闭了插座开关");break;
+				  case 3:list.get(i).set("message","关闭了阳台开关");break;
+				  case 4:list.get(i).set("message","关闭了洗手间开关");break;
+				  default:list.get(i).set("message","关闭了总开关");break;
+				  }   
+		   }
+		  
+		}
+		InquiryDBResponse response = new InquiryDBResponse();
+		if (list.isEmpty()) {
+			response.setCode(Code.FAIL).setMessage("room_id or inquirytimne is error");
+			renderJson(response);
+			return;
+		}
+		response.setInfo(list);
+		response.setMessage("Inquiry_Channel_Control_Log Success");
 		renderJson(response);
 
 	}
