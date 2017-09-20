@@ -497,7 +497,7 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT a.studentID,a.academy,a.major,a.telephone,a.departmentID,a.building,a.dormitory FROM stp_hp_student as a where a.studentID=?";
+		String sql = "SELECT a.studentID,a.academy,a.major,a.telephone,b.departmentID,b.building,b.dormitory FROM stp_hp_student as a,stp_roominfo as b where a.studentID=? and b.room_id=a.room_id";
 		List<Record> nowBuilding = Db.find(sql,studentID);
 		InquiryDBResponse response = new InquiryDBResponse();
 		if (nowBuilding == null) {
@@ -602,7 +602,7 @@ public class InquiryAPIController extends BaseAPIController {
 		List<Record> list = new ArrayList<>();
 		List<Record> list1 = new ArrayList<>();
 		if(role.equals("0")) {
-			String sql = "SELECT b.tel_num,b.username,b.sex,b.email,b.status from stp_api_user as b where b.username=?";
+			String sql = "SELECT b.username,b.studentID,b.userId,b.status from stp_api_user as b where b.username=?";
 	        list = Db.find(sql,username);
 		}else {	
 		Db.execute(new ICallback() {

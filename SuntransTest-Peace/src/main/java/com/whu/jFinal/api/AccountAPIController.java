@@ -146,12 +146,8 @@ public class AccountAPIController extends BaseAPIController {
 		String salt = SMSUtils.randomSMSCode(6);
 		new User()
                 .set("userId", 0)
-                .set(User.TEL_NUM, tel_num)
                 .set(User.PASSWORD, StringUtils.encodePassword(salt+password, "md5"))
-                .set(User.USERNAME, username)
-		        .set(User.CREATION_DATE, DateUtils.getNowTimeStamp())
-		        .set(User.SEX, sex)
-                .set(User.AVATAR, avatar)
+                .set(User.USERNAME, username)		    
                 .set("salt", salt)
                 .save();
 		
@@ -259,30 +255,6 @@ public class AccountAPIController extends BaseAPIController {
             user.set(USERNAME, username);
             flag = true;
         }
-
-        String email = getPara("email");
-        if (StringUtils.isNotEmpty(email)) {
-            user.set(EMAIL, email);
-            flag = true;
-        }
-        
-        String avatar = getPara("avatar");
-        if (StringUtils.isNotEmpty(avatar)) {
-            user.set(AVATAR, avatar);
-            flag = true;
-        }
-
-        //修改性别
-        Integer sex = getParaToInt("sex", null);
-        if (null != sex) {
-            if (!User.checkSex(sex)) {
-                renderArgumentError("sex is invalid");
-                return;
-            }
-            user.set(SEX, sex);
-            flag = true;
-        }
-
         if (flag) {
             boolean update = user.update();
             renderJson(response.setCode(update ? Code.SUCCESS : Code.FAIL).setMessage(update ? "update success" : "update failed"));
@@ -327,8 +299,6 @@ public class AccountAPIController extends BaseAPIController {
     			.put(avatar, "avatar url can not be null"))){
     		return;
     	}
-    	getUser().set(User.AVATAR, avatar).update();
-    	renderSuccess("success");
     }
 }
 
