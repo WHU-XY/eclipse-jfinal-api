@@ -36,7 +36,7 @@ public class InquiryAPIController extends BaseAPIController {
 		List<Record> floor=null;
 		for(int i=0;i<area.size();i++) {
 		
-			String sql1 = "SELECT distinct a.building,a.building_name FROM stp_roominfo as a where a.departmentID=?";
+			String sql1 = "SELECT distinct a.building,a.building_name FROM stp_roominfo as a where a.departmentID=? order by a.building asc";
 			building = Db.find(sql1,area.get(i).getInt("departmentID"));
 			for(int j=0;j<building.size();j++) {
 				String sql2 = "SELECT distinct a.floor,a.floor_name FROM stp_roominfo as a where a.departmentID=? and a.building=? order by a.floor asc";
@@ -117,7 +117,7 @@ public class InquiryAPIController extends BaseAPIController {
 				return null;
 			}
 		});		
-		String sql = "SELECT a.room_id,a.dormitory FROM stp_roominfo as a where a.departmentID=? and a.building=? and a.floor=? order by a.dormitory";
+		String sql = "SELECT a.room_id,a.dormitory,b.`status` FROM stp_roominfo as a,stp_rooms as b where a.departmentID=? and a.building=? and a.floor=? and b.id=a.room_id order by a.dormitory";
 		List<Record> roomlist=null;
 		for(int i=0;i<list.size();i++) {
 			roomlist=Db.find(sql,list.get(i).getInt("departmentID"),list.get(i).getInt("building"),list.get(i).getInt("floor"));
@@ -147,7 +147,7 @@ public class InquiryAPIController extends BaseAPIController {
 				+ "stp_api_ammeter_this_month_data as c where a.id=b.room_id and b.room_id=c.room_id and c.room_id=?";
 		nowRoom = Db.find(sql,room_id);
 		
-		String sql1 = "SELECT b.id,b.num,b.name,b.status,c.addr FROM stp_slc_channel as b,stp_slc as c where b.slc_id=? and c.room_id=b.slc_id";
+		String sql1 = "SELECT b.id,b.num,b.name,b.status,c.addr,b.slc_id,d.status as sd_status FROM stp_slc_channel as b,stp_slc as c,stp_rooms as d where c.room_id=? and c.id=b.slc_id and d.id=c.room_id";
 		nowRoom1 = Db.find(sql1,room_id);
 		
 		String sql2 = "SELECT a.id,a.V_value,a.I_value,a.P_value,a.PR_value,a.E_value FROM stp_electricity_current as a where a.room_id=?";

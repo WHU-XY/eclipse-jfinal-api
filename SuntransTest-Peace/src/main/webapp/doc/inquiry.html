@@ -1354,6 +1354,7 @@ footer {
 		<li>sublist：子list</li>
 		<li>room_id: 寝室ID</li>
 		<li>dormitory: 寝室号</li>
+		<li>status: 锁定状态</li>
 	</ul>
 	<h5 id="简要示例">
 		<a name="简要示例" href="#简要示例"></a>简要示例
@@ -1369,43 +1370,34 @@ footer {
     "message": "Inquiry_Room_Info success",
     "info": [
         {
-            "departmentName": "工学部",
-            "floor_name": "2层",
-            "building_name": "1舍",
+            "departmentName": "测试学部",
+            "floor_name": "测试1层",
+            "building_name": "测试1楼",
             "sublist": [
                 {
-                    "room_id": 6,
-                    "dormitory": 201
+                    "room_id": 16,
+                    "dormitory": 101,
+                    "status": 0
                 },
                 {
                     "room_id": 2,
-                    "dormitory": 202
+                    "dormitory": 102,
+                    "status": 0
                 },
                 {
-                    "room_id": 7,
-                    "dormitory": 203
-                }
-            ],
-            "departmentID": 1,
-            "floor": 2,
-            "building": 1
-        },
-        {
-            "departmentName": "工学部",
-            "floor_name": "1层",
-            "building_name": "1舍",
-            "sublist": [
-                {
-                    "room_id": 1,
-                    "dormitory": 101
-                },
-                {
-                    "room_id": 8,
-                    "dormitory": 102
+                    "room_id": 12,
+                    "dormitory": 103,
+                    "status": 0
                 },
                 {
                     "room_id": 5,
-                    "dormitory": 103
+                    "dormitory": 104,
+                    "status": 0
+                },
+                {
+                    "room_id": 13,
+                    "dormitory": 105,
+                    "status": 0
                 }
             ],
             "departmentID": 1,
@@ -1475,6 +1467,7 @@ footer {
 		<li>num：通道号</li>
 		<li>name：通道名称</li>
 		<li>status：通道状态，true代表开，false代表关</li>
+		<li>sd_status：锁定状态</li>
 	</ul>
 	<p>
 		<strong>meter_info节点说明</strong>：
@@ -1508,90 +1501,108 @@ footer {
 </code></pre>">{
     "room_stu": [
         {
-            "studentID": null,
-            "name": "cc",
-            "telephone": null,
-            "academy": null
+            "studentID": 2013301470005,
+            "name": "测试5",
+            "telephone": 11111111111,
+            "academy": "e1"
         }
     ],
     "meter_info": [
         {
             "unit": "V",
             "name": "电压",
-            "id": 1,
-            "value": "240.7"
+            "data_type": 1,
+            "value": "230.3"
         },
         {
             "unit": "A",
             "name": "电流",
-            "id": 2,
+            "data_type": 2,
             "value": "0.00"
         },
         {
             "unit": "KW",
             "name": "功率",
-            "id": 3,
+            "data_type": 3,
             "value": "0.000"
         },
         {
             "unit": "",
             "name": "功率因数",
-            "id": 4,
+            "data_type": 4,
             "value": "1.000"
         },
         {
             "unit": "度",
             "name": "电表值",
-            "id": 5,
+            "data_type": 5,
             "value": "0.000"
         }
     ],
     "code": 1,
     "dev_channel": [
         {
+            "sd_status": 0,
             "num": 1,
             "name": "照明",
-            "id": 1,
+            "id": 73,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         },
         {
+            "sd_status": 0,
             "num": 2,
             "name": "插座",
-            "id": 2,
+            "id": 74,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         },
         {
+            "sd_status": 0,
             "num": 3,
             "name": "阳台",
-            "id": 3,
+            "id": 75,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         },
         {
+            "sd_status": 0,
             "num": 4,
             "name": "卫生间",
-            "id": 4,
+            "id": 76,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         },
         {
+            "sd_status": 0,
             "num": 5,
             "name": "备用",
-            "id": 5,
+            "id": 77,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         },
         {
+            "sd_status": 0,
             "num": 6,
             "name": "备用",
-            "id": 6,
+            "id": 78,
+            "addr": "00000395",
+            "slc_id": 13,
             "status": false
         }
     ],
     "message": "Inquiry_RoomDetail_RoomId Success",
     "account": [
         {
-            "totaluse": null,
-            "id": 1,
-            "monthuse": 0,
-            "balans": 2,
+            "totaluse": 0,
+            "id": 13,
+            "monthuse": null,
+            "balans": 100,
             "status": 0,
             "dayuse": 0
         }

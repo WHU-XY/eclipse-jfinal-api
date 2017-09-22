@@ -208,17 +208,44 @@ public class AccountAPIController extends BaseAPIController {
      */
     public void profile() {
         String method = getRequest().getMethod();
-        if ("get".equalsIgnoreCase(method)) { //查询资料
-            getProfile();
-        } else if ("put".equalsIgnoreCase(method)) { //修改资料
-            updateProfile();
-        } else {
-            render404();
+        if("post".equalsIgnoreCase(method)) {
+        	updateData();
+        }else {
+        	render404();
         }
+//        if ("get".equalsIgnoreCase(method)) { //查询资料
+//            getProfile();
+//        } else if ("put".equalsIgnoreCase(method)) { //修改资料
+//            updateProfile();
+//        } else {
+//            render404();
+//        }
     }
 
 
-    /**
+    private void updateData() {
+		// TODO Auto-generated method stub
+  
+        BaseResponse response = new BaseResponse();
+        String token = getPara("token");
+        User user = TokenManager.getMe().validate(token);
+        String tel = getPara("tel");
+        if(user.getInt("role")==0) {
+        	renderJson(response.setCode(Code.FAIL).setMessage("管理员账户暂没开通"));
+        }else {
+        	long stu_id=user.getLong("studentID");
+            
+            if(Db.find("SELECT *FROM stp_hp_student WHERE studentID=? and telephone=?",stu_id,tel).isEmpty()) {
+            	Db.update("UPDATE stp_hp_student set telephone=? where studentID=?", tel,stu_id);
+            }else {
+            	renderJson(response.setCode(Code.FAIL).setMessage("电话号码已占用"));
+            }
+            renderJson(response.setCode(Code.SUCCESS).setMessage("update success"));
+        }
+        
+	}
+
+	/**
      * 查询用户资料
      */
     private void getProfile() {

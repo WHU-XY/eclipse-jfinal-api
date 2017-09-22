@@ -19,6 +19,11 @@ public class IndexActionController extends Controller {
         render("doc/index.html");
         
     }
+    
+    public void help() {
+        render("help/index.html");  
+    }
+
 
     /**
      * 查询手机验证码 *

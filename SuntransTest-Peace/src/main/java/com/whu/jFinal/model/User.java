@@ -24,7 +24,7 @@ public class User extends Model<User> {
      * @return 用户id
      */
     public String userId() {
-        return getStr(USER_ID);
+        return getInt(USER_ID).toString();
         
     }
     
