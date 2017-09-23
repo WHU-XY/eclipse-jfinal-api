@@ -162,30 +162,49 @@ public class InquiryAPIController extends BaseAPIController {
 			renderJson(response);
 			return;
 		}
-		
 		List<Record> list = new ArrayList<>();
 		for(int i=0;i<5;i++) {
 			Record info = new Record();
 			if(i==0) {
 				info.set("name", "电压");
 				info.set("unit","V");
-				info.set("value",nowRoom2.get(0).get("V_value").toString());
+				if(nowRoom2.get(0).getBigDecimal("V_value")==null) {
+					info.set("value",null);
+				}else {
+					info.set("value",nowRoom2.get(0).getBigDecimal("V_value").toString());
+				}
 			}else if(i==1) {
 				info.set("name", "电流");
 				info.set("unit","A");
-				info.set("value",nowRoom2.get(0).get("I_value").toString());
+				if(nowRoom2.get(0).getBigDecimal("I_value")==null) {
+					info.set("value",null);
+				}else {
+					info.set("value",nowRoom2.get(0).getBigDecimal("I_value").toString());
+				}
 			}else if(i==2) {
 				info.set("name", "功率");
 				info.set("unit","KW");
-				info.set("value",nowRoom2.get(0).get("P_value").toString());
+				if(nowRoom2.get(0).getBigDecimal("P_value")==null) {
+					info.set("value",null);
+				}else {
+					info.set("value",nowRoom2.get(0).getBigDecimal("P_value").toString());
+				}
 			}else if(i==3) {
 				info.set("name", "功率因数");
 				info.set("unit","");
-				info.set("value",nowRoom2.get(0).get("PR_value").toString());
+				if(nowRoom2.get(0).getBigDecimal("PR_value")==null) {
+					info.set("value",null);
+				}else {
+					info.set("value",nowRoom2.get(0).getBigDecimal("PR_value").toString());
+				}
 			}else if(i==4) {
 				info.set("name", "电表值");
 				info.set("unit","度");
-				info.set("value",nowRoom2.get(0).get("E_value").toString());
+				if(nowRoom2.get(0).getBigDecimal("E_value")==null) {
+					info.set("value",null);
+				}else {
+					info.set("value",nowRoom2.get(0).getBigDecimal("E_value").toString());
+				}
 			}
 			info.set("data_type",i+1);
 			list.add(info);

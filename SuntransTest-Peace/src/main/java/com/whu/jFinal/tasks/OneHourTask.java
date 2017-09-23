@@ -33,7 +33,7 @@ public class OneHourTask implements Runnable {
 				return null;
 			}
 		});	
-		Db.execute(new ICallback() {
+		/*Db.execute(new ICallback() {
 			@Override
 			public Object call(Connection arg0) throws SQLException {
 				// TODO Auto-generated method stub
@@ -53,7 +53,7 @@ public class OneHourTask implements Runnable {
 				}
 				return null;
 			}
-		});	
+		});	*/
 		System.out.println("OneHourTask done"); 
 	}
 
