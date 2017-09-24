@@ -27,7 +27,6 @@ import com.whu.jFinal.response.InquiryRoomIdResponse;
 @Before(TokenInterceptor.class)
 public class InquiryAPIController extends BaseAPIController {
 	
-	@Clear
 	public void Inquiry_Department_Info() {
 
 		String sql = "SELECT distinct a.departmentID,a.departmentName FROM stp_roominfo as a";
@@ -58,7 +57,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Room_Info() {
 
 		String departmentID = getPara("departmentID");
@@ -129,7 +127,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Room_Detail_Byrid() {
 
 		String room_id = getPara("room_id");
@@ -219,7 +216,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Room_Detail_Bysid() {
 
 		String studentID = getPara("studentID");
@@ -292,7 +288,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Ammeter_History() {
 
 		String room_id = getPara("room_id");
@@ -432,7 +427,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Student_Info() {
 
 		String departmentID = getPara("departmentID");
@@ -503,7 +497,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_Student_Detail_BySid() {
 
 		String studentID = getPara("studentID");
@@ -530,7 +523,6 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	@Clear
 	public void Inquiry_3Ammeter_Current() {
 
 		String departmentID = getPara("departmentID");
@@ -605,7 +597,6 @@ public class InquiryAPIController extends BaseAPIController {
 	}
 	
 	//仅限学生用户查询
-	@Clear
 	public void Inquiry_StudentInfo_Byusername() {
 
 		String username = getPara("username");
@@ -680,7 +671,6 @@ public class InquiryAPIController extends BaseAPIController {
 	}
 	
 	
-	@Clear
 	public void Inquiry_Channel_Control_Log() {
 
 		String room_id = getPara("room_id");
