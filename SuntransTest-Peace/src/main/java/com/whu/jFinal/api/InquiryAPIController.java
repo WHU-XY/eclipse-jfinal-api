@@ -794,12 +794,24 @@ public class InquiryAPIController extends BaseAPIController {
 				return null;
 			}
 		});
+		
+		Record dev = new Record();
+		dev.set("classID", 6);
+		dev.set("class_name", "致2017年新生的一封信");
+		dev.set("type", 700);
+		dev.set("name","http://g.suntrans.net:8088/SuntransTest-Peace/message/letter.html");
+		dev.set("created_at", "2017-10-01");
+		
+		list.add(dev);
+		
 		InquiryDBResponse response = new InquiryDBResponse();
 		if (list.isEmpty()) {
 			response.setCode(Code.FAIL).setMessage("查询数据为空");
 			renderJson(response);
 			return;
 		}
+		
+		
 		response.setInfo(list);
 		response.setMessage("查询成功");
 		renderJson(response);

@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<context:component-scan base-package="org.zhangfc.demo4ssh.mvc"/>
+
+	<mvc:annotation-driven />
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="UTF-8"/>  
+        <!-- 指定所上传文件的总大小不能超过2MB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->  
+        <property name="maxUploadSize" value="2000000"/>  
+    </bean>
+
+	<mvc:resources mapping="/static/**" location="/resources/"/>
+
+	<mvc:default-servlet-handler />
+
+</beans>

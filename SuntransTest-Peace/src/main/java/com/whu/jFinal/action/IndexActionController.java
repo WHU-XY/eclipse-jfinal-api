@@ -23,6 +23,9 @@ public class IndexActionController extends Controller {
     public void help() {
         render("help/index.html");  
     }
+    public void message() {
+        render("message/letter.html");  
+    }
 
 
     /**
