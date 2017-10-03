@@ -1,0 +1,4200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>inquiry.html</title>
+<meta name="generator" content="Haroopad 0.13.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+div.oembedall-githubrepos {
+	border: 1px solid #DDD;
+	border-radius: 4px;
+	list-style-type: none;
+	margin: 0 0 10px;
+	padding: 8px 10px 0;
+	font: 13.34px/1.4 helvetica, arial, freesans, clean, sans-serif;
+	width: 452px;
+	background-color: #fff
+}
+
+div.oembedall-githubrepos .oembedall-body {
+	background: -moz-linear-gradient(center top, #FAFAFA, #EFEFEF);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FAFAFA),
+		to(#EFEFEF));
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-top: 1px solid #EEE;
+	margin-left: -10px;
+	margin-top: 8px;
+	padding: 5px 10px;
+	width: 100%
+}
+
+div.oembedall-githubrepos h3 {
+	font-size: 14px;
+	margin: 0;
+	padding-left: 18px;
+	white-space: nowrap
+}
+
+div.oembedall-githubrepos p.oembedall-description {
+	color: #444;
+	font-size: 12px;
+	margin: 0 0 3px
+}
+
+div.oembedall-githubrepos p.oembedall-updated-at {
+	color: #888;
+	font-size: 11px;
+	margin: 0
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats {
+	border: none;
+	float: right;
+	font-size: 11px;
+	font-weight: 700;
+	padding-left: 15px;
+	position: relative;
+	z-index: 5;
+	margin: 0
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats li {
+	border: none;
+	color: #666;
+	display: inline-block;
+	list-style-type: none;
+	margin: 0 !important
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats li a {
+	background-color: transparent;
+	border: none;
+	color: #666 !important;
+	background-position: 5px -2px;
+	background-repeat: no-repeat;
+	border-left: 1px solid #DDD;
+	display: inline-block;
+	height: 21px;
+	line-height: 21px;
+	padding: 0 5px 0 23px
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a {
+	border-left: medium none;
+	margin-right: -3px
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats li a:hover {
+	background: 5px -27px no-repeat #4183C4;
+	color: #FFF !important;
+	text-decoration: none
+}
+
+div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a:hover
+	{
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px
+}
+
+ul.oembedall-repo-stats li:last-child a:hover {
+	border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px
+}
+
+span.oembedall-closehide {
+	background-color: #aaa;
+	border-radius: 2px;
+	cursor: pointer;
+	margin-right: 3px
+}
+
+div.oembedall-container {
+	margin-top: 5px;
+	text-align: left
+}
+
+.oembedall-ljuser {
+	font-weight: 700
+}
+
+.oembedall-ljuser img {
+	vertical-align: bottom;
+	border: 0;
+	padding-right: 1px
+}
+
+.oembedall-stoqembed {
+	border-bottom: 1px dotted #999;
+	float: left;
+	overflow: hidden;
+	width: 730px;
+	line-height: 1;
+	background: #FFF;
+	color: #000;
+	font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
+	font-size: 80%;
+	text-align: left;
+	margin: 0;
+	padding: 0
+}
+
+.oembedall-stoqembed a {
+	color: #07C;
+	text-decoration: none;
+	margin: 0;
+	padding: 0
+}
+
+.oembedall-stoqembed a:hover {
+	text-decoration: underline
+}
+
+.oembedall-stoqembed a:visited {
+	color: #4A6B82
+}
+
+.oembedall-stoqembed h3 {
+	font-family: Trebuchet MS, Liberation Sans, DejaVu Sans, sans-serif;
+	font-size: 130%;
+	font-weight: 700;
+	margin: 0;
+	padding: 0
+}
+
+.oembedall-stoqembed .oembedall-reputation-score {
+	color: #444;
+	font-size: 120%;
+	font-weight: 700;
+	margin-right: 2px
+}
+
+.oembedall-stoqembed .oembedall-user-info {
+	height: 35px;
+	width: 185px
+}
+
+.oembedall-stoqembed .oembedall-user-info .oembedall-user-gravatar32 {
+	float: left;
+	height: 32px;
+	width: 32px
+}
+
+.oembedall-stoqembed .oembedall-user-info .oembedall-user-details {
+	float: left;
+	margin-left: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 145px
+}
+
+.oembedall-stoqembed .oembedall-question-hyperlink {
+	font-weight: 700
+}
+
+.oembedall-stoqembed .oembedall-stats {
+	background: #EEE;
+	margin: 0 0 0 7px;
+	padding: 4px 7px 6px;
+	width: 58px
+}
+
+.oembedall-stoqembed .oembedall-statscontainer {
+	float: left;
+	margin-right: 8px;
+	width: 86px
+}
+
+.oembedall-stoqembed .oembedall-votes {
+	color: #555;
+	padding: 0 0 7px;
+	text-align: center
+}
+
+.oembedall-stoqembed .oembedall-vote-count-post {
+	font-size: 240%;
+	color: #808185;
+	display: block;
+	font-weight: 700
+}
+
+.oembedall-stoqembed .oembedall-views {
+	color: #999;
+	padding-top: 4px;
+	text-align: center
+}
+
+.oembedall-stoqembed .oembedall-status {
+	margin-top: -3px;
+	padding: 4px 0;
+	text-align: center;
+	background: #75845C;
+	color: #FFF
+}
+
+.oembedall-stoqembed .oembedall-status strong {
+	color: #FFF;
+	display: block;
+	font-size: 140%
+}
+
+.oembedall-stoqembed .oembedall-summary {
+	float: left;
+	width: 635px
+}
+
+.oembedall-stoqembed .oembedall-excerpt {
+	line-height: 1.2;
+	margin: 0;
+	padding: 0 0 5px
+}
+
+.oembedall-stoqembed .oembedall-tags {
+	float: left;
+	line-height: 18px
+}
+
+.oembedall-stoqembed .oembedall-tags a:hover {
+	text-decoration: none
+}
+
+.oembedall-stoqembed .oembedall-post-tag {
+	background-color: #E0EAF1;
+	border-bottom: 1px solid #3E6D8E;
+	border-right: 1px solid #7F9FB6;
+	color: #3E6D8E;
+	font-size: 90%;
+	line-height: 2.4;
+	margin: 2px 2px 2px 0;
+	padding: 3px 4px;
+	text-decoration: none;
+	white-space: nowrap
+}
+
+.oembedall-stoqembed .oembedall-post-tag:hover {
+	background-color: #3E6D8E;
+	border-bottom: 1px solid #37607D;
+	border-right: 1px solid #37607D;
+	color: #E0EAF1
+}
+
+.oembedall-stoqembed .oembedall-fr {
+	float: right
+}
+
+.oembedall-stoqembed .oembedall-statsarrow {
+	background-image:
+		url(http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: 0 -435px;
+	float: right;
+	height: 13px;
+	margin-top: 12px;
+	width: 7px
+}
+
+.oembedall-facebook1 {
+	border: 1px solid #1A3C6C;
+	padding: 0;
+	font: 13.34px/1.4 verdana;
+	width: 500px
+}
+
+.oembedall-facebook2 {
+	background-color: #627add
+}
+
+.oembedall-facebook2 a {
+	color: #e8e8e8;
+	text-decoration: none
+}
+
+.oembedall-facebookBody {
+	background-color: #fff;
+	vertical-align: top;
+	padding: 5px
+}
+
+.oembedall-facebookBody .contents {
+	display: inline-block;
+	width: 100%
+}
+
+.oembedall-facebookBody div img {
+	float: left;
+	margin-right: 5px
+}
+
+div.oembedall-lanyard {
+	-webkit-box-shadow: none;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-duration: .4000000059604645s;
+	-webkit-transition-property: width;
+	-webkit-transition-timing-function: cubic-bezier(0.42, 0, .58, 1);
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: transparent;
+	background-image: none;
+	background-origin: padding-box;
+	border-width: 0;
+	box-shadow: none;
+	color: #112644;
+	display: block;
+	float: left;
+	font-family: 'Trebuchet MS', Trebuchet, sans-serif;
+	font-size: 16px;
+	height: 253px;
+	line-height: 19px;
+	margin: 0;
+	max-width: none;
+	min-height: 0;
+	outline: #112644 0;
+	overflow-x: visible;
+	overflow-y: visible;
+	padding: 0;
+	position: relative;
+	text-align: left;
+	vertical-align: baseline;
+	width: 804px
+}
+
+div.oembedall-lanyard .tagline {
+	font-size: 1.5em
+}
+
+div.oembedall-lanyard .wrapper {
+	overflow: hidden;
+	clear: both
+}
+
+div.oembedall-lanyard .split {
+	float: left;
+	display: inline
+}
+
+div.oembedall-lanyard .prominent-place .flag:active, div.oembedall-lanyard .prominent-place .flag:focus,
+	div.oembedall-lanyard .prominent-place .flag:hover, div.oembedall-lanyard .prominent-place .flag:link,
+	div.oembedall-lanyard .prominent-place .flag:visited {
+	float: left;
+	display: block;
+	width: 48px;
+	height: 48px;
+	position: relative;
+	top: -5px;
+	margin-right: 10px
+}
+
+div.oembedall-lanyard .place-context {
+	font-size: .889em
+}
+
+div.oembedall-lanyard .prominent-place .sub-place {
+	display: block
+}
+
+div.oembedall-lanyard .prominent-place {
+	font-size: 1.125em;
+	line-height: 1.1em;
+	font-weight: 400
+}
+
+div.oembedall-lanyard .main-date {
+	color: #8CB4E0;
+	font-weight: 700;
+	line-height: 1.1
+}
+
+div.oembedall-lanyard .first {
+	width: 48.57%;
+	margin: 0 0 0 2.857%
+}
+
+html {
+	height: 100%
+}
+
+body {
+	margin: 0 !important;
+	padding: 5px 20px 26px !important;
+	background-color: #fff;
+	font-family: "Lucida Grande", "Segoe UI", "Apple SD Gothic Neo",
+		"Malgun Gothic", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+	font-size: .9em;
+	overflow-x: hidden;
+	overflow-y: auto
+}
+
+br, h1, h2, h3, h4, h5, h6 {
+	clear: both
+}
+
+hr.page {
+	background:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC)
+		repeat-x;
+	border: 0;
+	color: #ccc;
+	height: 3px;
+	padding: 0
+}
+
+hr.underscore {
+	border: 0 !important;
+	height: 30px;
+	padding: 0;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0
+}
+
+body>:first-child {
+	margin-top: 0 !important
+}
+
+img.plugin {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+	border-radius: 3px
+}
+
+iframe {
+	border: 0
+}
+
+figure {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0
+}
+
+kbd {
+	border: 1px solid #aaa;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: 1px 2px 2px #ddd;
+	-webkit-box-shadow: 1px 2px 2px #ddd;
+	box-shadow: 1px 2px 2px #ddd;
+	background-color: #f9f9f9;
+	background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee);
+	background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee);
+	background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee);
+	background-image: linear-gradient(top, #eee, #f9f9f9, #eee);
+	padding: 1px 3px;
+	font-family: inherit;
+	font-size: .85em
+}
+
+.oembeded .oembed_photo {
+	display: inline-block
+}
+
+img[data-echo] {
+	margin: 25px 0;
+	width: 100px;
+	height: 100px;
+	background: url(../img/ajax.gif) center center no-repeat #fff
+}
+
+.spinner {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-bottom: -.1em;
+	border: 2px solid rgba(0, 0, 0, .5);
+	border-top-color: transparent;
+	border-radius: 100%;
+	-webkit-animation: spin 1s infinite linear;
+	animation: spin 1s infinite linear
+}
+
+.spinner:after {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: -6px;
+	left: 0;
+	border: 4px solid transparent;
+	border-bottom-color: rgba(0, 0, 0, .5);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg)
+}
+
+@
+-webkit-keyframes spin {
+	to {-webkit-transform: rotate(360deg)
+}
+
+}
+@
+keyframes spin {
+	to {transform: rotate(360deg)
+}
+
+}
+p.toc {
+	margin: 0 !important
+}
+
+p.toc ul {
+	padding-left: 10px
+}
+
+p.toc>ul {
+	padding: 10px;
+	margin: 0 10px;
+	display: inline-block;
+	border: 1px solid #ededed;
+	border-radius: 5px
+}
+
+p.toc li, p.toc ul {
+	list-style-type: none
+}
+
+p.toc li {
+	width: 100%;
+	padding: 0;
+	overflow: hidden
+}
+
+p.toc li a::after {
+	content: "."
+}
+
+p.toc li a:before {
+	content: "• "
+}
+
+p.toc h5 {
+	text-transform: uppercase
+}
+
+p.toc .title {
+	float: left;
+	padding-right: 3px
+}
+
+p.toc .number {
+	margin: 0;
+	float: right;
+	padding-left: 3px;
+	background: #fff;
+	display: none
+}
+
+.markdown {
+	padding: 20px
+}
+
+.markdown a {
+	text-decoration: none;
+	vertical-align: baseline
+}
+
+.markdown a:hover {
+	text-decoration: underline
+}
+
+.markdown h1 {
+	font-size: 2.2em;
+	font-weight: 700;
+	margin: 1.5em 0 1em
+}
+
+.markdown h2 {
+	font-size: 1.8em;
+	font-weight: 700;
+	margin: 1.275em 0 .85em
+}
+
+.markdown h3 {
+	font-size: 1.6em;
+	font-weight: 700;
+	margin: 1.125em 0 .75em
+}
+
+.markdown h4 {
+	font-size: 1.4em;
+	font-weight: 700;
+	margin: .99em 0 .66em
+}
+
+.markdown h5 {
+	font-size: 1.2em;
+	font-weight: 700;
+	margin: .855em 0 .57em
+}
+
+.markdown h6 {
+	font-size: 1em;
+	font-weight: 700;
+	margin: .75em 0 .5em
+}
+
+.markdown h1+p, .markdown h1:first-child, .markdown h2+p, .markdown h2:first-child,
+	.markdown h3+p, .markdown h3:first-child, .markdown h4+p, .markdown h4:first-child,
+	.markdown h5+p, .markdown h5:first-child, .markdown h6+p, .markdown h6:first-child
+	{
+	margin-top: 0
+}
+
+.markdown hr {
+	border: 1px solid #ccc
+}
+
+.markdown p {
+	margin: 1em 0;
+	word-wrap: break-word
+}
+
+.markdown ol {
+	list-style-type: decimal
+}
+
+.markdown li {
+	display: list-item;
+	line-height: 1.4em
+}
+
+.markdown blockquote {
+	margin: 1em 20px
+}
+
+.markdown blockquote>:first-child {
+	margin-top: 0
+}
+
+.markdown blockquote>:last-child {
+	margin-bottom: 0
+}
+
+.markdown blockquote cite:before {
+	content: '\2014 \00A0'
+}
+
+.markdown .code {
+	border-radius: 3px;
+	word-wrap: break-word
+}
+
+.markdown pre {
+	border-radius: 3px;
+	word-wrap: break-word;
+	border: 1px solid #ccc;
+	overflow: auto
+}
+
+.markdown pre code {
+	display: block
+}
+
+.markdown pre>code {
+	white-space: pre;
+	padding: .5em;
+	margin: 0
+}
+
+.markdown code {
+	border-radius: 3px;
+	word-wrap: break-word;
+	padding: 0 5px;
+	margin: 0 2px
+}
+
+.markdown img {
+	max-width: 100%
+}
+
+.markdown table {
+	padding: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: 16px
+}
+
+.markdown table tr td, .markdown table tr th {
+	border: 1px solid #ccc;
+	margin: 0;
+	padding: 6px 13px
+}
+
+.markdown table tr th {
+	font-weight: 700
+}
+
+.markdown table tr th>:first-child {
+	margin-top: 0
+}
+
+.markdown table tr th>:last-child {
+	margin-bottom: 0
+}
+
+.markdown table tr td>:first-child {
+	margin-top: 0
+}
+
+.markdown table tr td>:last-child {
+	margin-bottom: 0
+}
+
+.markdown em.underline {
+	font-style: normal;
+	text-decoration: underline
+}
+
+.markdown strong.highlight {
+	color: #000;
+	padding: 0 5px;
+	background-color: #fdffb6;
+	-webkit-box-shadow: #fdffb6 0 0 5px;
+	-moz-box-shadow: #fdffb6 0 0 5px;
+	box-shadow: #fdffb6 0 0 5px
+}
+
+.github {
+	padding: 20px;
+	color: #000;
+	font-size: 15px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
+		AppleSDGothicNeo-Medium, 'Segoe UI', 'Malgun Gothic', Verdana, Tahoma,
+		sans-serif;
+	background: #fff;
+	-webkit-font-smoothing: antialiased
+}
+
+.github a {
+	color: #3269a0
+}
+
+.github a:hover {
+	color: #4183c4
+}
+
+.github h2 {
+	border-bottom: 1px solid #e6e6e6;
+	line-height: 1.7em
+}
+
+.github h6 {
+	color: #777
+}
+
+.github hr {
+	border: 1px solid #e6e6e6
+}
+
+.github pre>code {
+	font-size: .9em;
+	font-family: Consolas, Inconsolata, Courier, monospace
+}
+
+.github blockquote {
+	border-left: 4px solid #e6e6e6;
+	padding: 0 15px;
+	font-style: italic
+}
+
+.github table {
+	background-color: #fafafa
+}
+
+.github table tr td, .github table tr th {
+	border: 1px solid #e6e6e6
+}
+
+.github table tr:nth-child(2n) {
+	background-color: #f2f2f2
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: .5em;
+	color: #333;
+	background: #f8f8f8;
+	-webkit-text-size-adjust: none
+}
+
+.diff .hljs-header, .hljs-comment, .hljs-javadoc {
+	color: #998;
+	font-style: italic
+}
+
+.css .rule .hljs-keyword, .hljs-keyword, .hljs-request, .hljs-status,
+	.hljs-subst, .hljs-winutils, .nginx .hljs-title {
+	color: #333;
+	font-weight: 700
+}
+
+.hljs-hexcolor, .hljs-number, .ruby .hljs-constant {
+	color: teal
+}
+
+.hljs-dartdoc, .hljs-phpdoc, .hljs-string, .hljs-tag .hljs-value, .tex .hljs-formula
+	{
+	color: #d14
+}
+
+.hljs-id, .hljs-title, .scss .hljs-preprocessor {
+	color: #900;
+	font-weight: 700
+}
+
+.hljs-list .hljs-keyword, .hljs-subst {
+	font-weight: 400
+}
+
+.hljs-class .hljs-title, .hljs-type, .tex .hljs-command, .vhdl .hljs-literal
+	{
+	color: #458;
+	font-weight: 700
+}
+
+.django .hljs-tag .hljs-keyword, .hljs-rules .hljs-property, .hljs-tag,
+	.hljs-tag .hljs-title {
+	color: navy;
+	font-weight: 400
+}
+
+.hljs-attribute, .hljs-variable, .lisp .hljs-body {
+	color: teal
+}
+
+.hljs-regexp {
+	color: #009926
+}
+
+.clojure .hljs-keyword, .hljs-prompt, .hljs-symbol, .lisp .hljs-keyword,
+	.ruby .hljs-symbol .hljs-string, .scheme .hljs-keyword, .tex .hljs-special
+	{
+	color: #990073
+}
+
+.hljs-built_in {
+	color: #0086b3
+}
+
+.hljs-cdata, .hljs-doctype, .hljs-pi, .hljs-pragma, .hljs-preprocessor,
+	.hljs-shebang {
+	color: #999;
+	font-weight: 700
+}
+
+.hljs-deletion {
+	background: #fdd
+}
+
+.hljs-addition {
+	background: #dfd
+}
+
+.diff .hljs-change {
+	background: #0086b3
+}
+
+.hljs-chunk {
+	color: #aaa
+}
+
+.MathJax_Hover_Frame {
+	border-radius: .25em;
+	-webkit-border-radius: .25em;
+	-moz-border-radius: .25em;
+	-khtml-border-radius: .25em;
+	box-shadow: 0 0 15px #83A;
+	-webkit-box-shadow: 0 0 15px #83A;
+	-moz-box-shadow: 0 0 15px #83A;
+	-khtml-box-shadow: 0 0 15px #83A;
+	border: 1px solid #A6D !important;
+	display: inline-block;
+	position: absolute
+}
+
+.MathJax_Hover_Arrow {
+	position: absolute;
+	width: 15px;
+	height: 11px;
+	cursor: pointer
+}
+
+#MathJax_About {
+	position: fixed;
+	left: 50%;
+	width: auto;
+	text-align: center;
+	border: 3px outset;
+	padding: 1em 2em;
+	background-color: #DDD;
+	color: #000;
+	cursor: default;
+	font-family: message-box;
+	font-size: 120%;
+	font-style: normal;
+	text-indent: 0;
+	text-transform: none;
+	line-height: normal;
+	letter-spacing: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	float: none;
+	z-index: 201;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	box-shadow: 0 10px 20px gray;
+	-webkit-box-shadow: 0 10px 20px gray;
+	-moz-box-shadow: 0 10px 20px gray;
+	-khtml-box-shadow: 0 10px 20px gray;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+		Color='gray', Positive='true')
+}
+
+.MathJax_Menu {
+	position: absolute;
+	background-color: #fff;
+	color: #000;
+	width: auto;
+	padding: 5px 0;
+	border: 1px solid #CCC;
+	margin: 0;
+	cursor: default;
+	font: menu;
+	text-align: left;
+	text-indent: 0;
+	text-transform: none;
+	line-height: normal;
+	letter-spacing: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	float: none;
+	z-index: 201;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	box-shadow: 0 10px 20px gray;
+	-webkit-box-shadow: 0 10px 20px gray;
+	-moz-box-shadow: 0 10px 20px gray;
+	-khtml-box-shadow: 0 10px 20px gray;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+		Color='gray', Positive='true')
+}
+
+.MathJax_MenuItem {
+	padding: 1px 2em;
+	background: 0 0
+}
+
+.MathJax_MenuArrow {
+	position: absolute;
+	right: .5em;
+	color: #666
+}
+
+.MathJax_MenuActive .MathJax_MenuArrow {
+	color: #fff
+}
+
+.MathJax_MenuCheck, .MathJax_MenuRadioCheck {
+	position: absolute;
+	left: .7em
+}
+
+.MathJax_MenuLabel {
+	padding: 1px 2em 3px 1.33em;
+	font-style: italic
+}
+
+.MathJax_MenuRule {
+	border-top: 1px solid #DDD;
+	margin: 4px 3px
+}
+
+.MathJax_MenuDisabled {
+	color: GrayText
+}
+
+.MathJax_MenuActive {
+	background-color: #606872;
+	color: #fff
+}
+
+.MathJax_Menu_Close {
+	position: absolute;
+	width: 31px;
+	height: 31px;
+	top: -15px;
+	left: -15px
+}
+
+#MathJax_Zoom {
+	position: absolute;
+	background-color: #F0F0F0;
+	overflow: auto;
+	display: block;
+	z-index: 301;
+	padding: .5em;
+	border: 1px solid #000;
+	margin: 0;
+	font-weight: 400;
+	font-style: normal;
+	text-align: left;
+	text-indent: 0;
+	text-transform: none;
+	line-height: normal;
+	letter-spacing: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	float: none;
+	box-shadow: 5px 5px 15px #AAA;
+	-webkit-box-shadow: 5px 5px 15px #AAA;
+	-moz-box-shadow: 5px 5px 15px #AAA;
+	-khtml-box-shadow: 5px 5px 15px #AAA;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2,
+		Color='gray', Positive='true')
+}
+
+#MathJax_ZoomOverlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 300;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background-color: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0)
+}
+
+#MathJax_ZoomFrame {
+	position: relative;
+	display: inline-block;
+	height: 0;
+	width: 0
+}
+
+#MathJax_ZoomEventTrap {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 302;
+	display: inline-block;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background-color: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0)
+}
+
+.MathJax_Preview {
+	color: #888
+}
+
+#MathJax_Message {
+	position: fixed;
+	left: 1px;
+	bottom: 2px;
+	background-color: #E6E6E6;
+	border: 1px solid #959595;
+	margin: 0;
+	padding: 2px 8px;
+	z-index: 102;
+	color: #000;
+	font-size: 80%;
+	width: auto;
+	white-space: nowrap
+}
+
+#MathJax_MSIE_Frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	z-index: 101;
+	border: 0;
+	margin: 0;
+	padding: 0
+}
+
+.MathJax_Error {
+	color: #C00;
+	font-style: italic
+}
+
+footer {
+	position: fixed;
+	font-size: .8em;
+	text-align: right;
+	bottom: 0;
+	margin-left: -25px;
+	height: 20px;
+	width: 100%
+}
+</style>
+</head>
+<body class="markdown github">
+	<h2 id="account">
+		<a name="account" href="#account"></a>inquiry
+	</h2>
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询学部、宿舍楼、楼层三级菜单
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Department_Info
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>departmentName：学部名</li>
+		<li>sublist：子list</li>
+		<li>building: 宿舍楼ID</li>
+		<li>building_name: 宿舍楼名称</li>
+		<li>floor: 楼层ID</li>
+		<li>floor_name: 楼层名称</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "查询三级菜单成功",
+    "info": [
+        {
+            "departmentName": "和平校区",
+            "sublist": [
+                {
+                    "building_name": "一号学生公寓",
+                    "sublist": [
+                        {
+                            "floor_name": "一号1层",
+                            "floor": 8
+                        },
+                        {
+                            "floor_name": "一号2层",
+                            "floor": 9
+                        },
+                        {
+                            "floor_name": "一号3层",
+                            "floor": 10
+                        },
+                        {
+                            "floor_name": "一号4层",
+                            "floor": 11
+                        },
+                        {
+                            "floor_name": "一号5层",
+                            "floor": 12
+                        },
+                        {
+                            "floor_name": "一号6层",
+                            "floor": 13
+                        },
+                        {
+                            "floor_name": "一号7层",
+                            "floor": 14
+                        },
+                        {
+                            "floor_name": "一号8层",
+                            "floor": 15
+                        }
+                    ],
+                    "building": 3
+                },
+                {
+                    "building_name": "二号学生公寓",
+                    "sublist": [
+                        {
+                            "floor_name": "二号1层",
+                            "floor": 16
+                        },
+                        {
+                            "floor_name": "二号2层",
+                            "floor": 17
+                        },
+                        {
+                            "floor_name": "二号3层",
+                            "floor": 18
+                        },
+                        {
+                            "floor_name": "二号4层",
+                            "floor": 19
+                        },
+                        {
+                            "floor_name": "二号5层",
+                            "floor": 20
+                        },
+                        {
+                            "floor_name": "二号6层",
+                            "floor": 21
+                        },
+                        {
+                            "floor_name": "二号7层",
+                            "floor": 22
+                        },
+                        {
+                            "floor_name": "二号8层",
+                            "floor": 23
+                        }
+                    ],
+                    "building": 4
+                },
+                {
+                    "building_name": "三号学生公寓",
+                    "sublist": [
+                        {
+                            "floor_name": "三号1层",
+                            "floor": 24
+                        },
+                        {
+                            "floor_name": "三号2层",
+                            "floor": 25
+                        },
+                        {
+                            "floor_name": "三号3层",
+                            "floor": 26
+                        },
+                        {
+                            "floor_name": "三号4层",
+                            "floor": 27
+                        },
+                        {
+                            "floor_name": "三号5层",
+                            "floor": 28
+                        },
+                        {
+                            "floor_name": "三号6层",
+                            "floor": 29
+                        },
+                        {
+                            "floor_name": "三号7层",
+                            "floor": 30
+                        },
+                        {
+                            "floor_name": "三号8层",
+                            "floor": 31
+                        }
+                    ],
+                    "building": 5
+                },
+                {
+                    "building_name": "四号学生公寓",
+                    "sublist": [
+                        {
+                            "floor_name": "四号1层",
+                            "floor": 32
+                        },
+                        {
+                            "floor_name": "四号2层",
+                            "floor": 33
+                        },
+                        {
+                            "floor_name": "四号3层",
+                            "floor": 34
+                        },
+                        {
+                            "floor_name": "四号4层",
+                            "floor": 35
+                        },
+                        {
+                            "floor_name": "四号5层",
+                            "floor": 36
+                        },
+                        {
+                            "floor_name": "四号6层",
+                            "floor": 37
+                        },
+                        {
+                            "floor_name": "四号7层",
+                            "floor": 38
+                        },
+                        {
+                            "floor_name": "四号8层",
+                            "floor": 39
+                        }
+                    ],
+                    "building": 6
+                },
+                {
+                    "building_name": "五号学生公寓",
+                    "sublist": [
+                        {
+                            "floor_name": "五号1层",
+                            "floor": 40
+                        },
+                        {
+                            "floor_name": "五号2层",
+                            "floor": 41
+                        },
+                        {
+                            "floor_name": "五号3层",
+                            "floor": 42
+                        },
+                        {
+                            "floor_name": "五号4层",
+                            "floor": 43
+                        },
+                        {
+                            "floor_name": "五号5层",
+                            "floor": 44
+                        },
+                        {
+                            "floor_name": "五号6层",
+                            "floor": 45
+                        },
+                        {
+                            "floor_name": "五号7层",
+                            "floor": 46
+                        },
+                        {
+                            "floor_name": "五号8层",
+                            "floor": 47
+                        }
+                    ],
+                    "building": 7
+                }
+            ],
+            "departmentID": 1
+        },
+        {
+            "departmentName": "三川广州",
+            "sublist": [
+                {
+                    "building_name": "光正科技园",
+                    "sublist": [
+                        {
+                            "floor_name": "1号楼4层",
+                            "floor": 49
+                        }
+                    ],
+                    "building": 48
+                }
+            ],
+            "departmentID": 2
+        }
+    ]
+}
+</code>
+	</pre>
+	<h3>
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询宿舍信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Room_Info
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>departmentID</strong>:学部ID(必填项)，1代表工学部，2代表文理学部</li>
+		<li><strong>building</strong>:宿舍楼ID</li>
+		<li><strong>floor</strong>:楼层ID</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>departmentName：学部名</li>
+		<li>building: 宿舍楼ID</li>
+		<li>building_name: 宿舍楼名称</li>
+		<li>floor: 楼层ID</li>
+		<li>floor_name: 楼层名称</li>
+		<li>sublist：子list</li>
+		<li>room_id: 寝室ID</li>
+		<li>dormitory: 寝室号</li>
+		<li>status: 锁定状态</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_Room_Info success",
+    "info": [
+        {
+            "departmentName": "测试学部",
+            "floor_name": "测试1层",
+            "building_name": "测试1楼",
+            "sublist": [
+                {
+                    "room_id": 16,
+                    "dormitory": 101,
+                    "status": 0
+                },
+                {
+                    "room_id": 2,
+                    "dormitory": 102,
+                    "status": 0
+                },
+                {
+                    "room_id": 12,
+                    "dormitory": 103,
+                    "status": 0
+                },
+                {
+                    "room_id": 5,
+                    "dormitory": 104,
+                    "status": 0
+                },
+                {
+                    "room_id": 13,
+                    "dormitory": 105,
+                    "status": 0
+                }
+            ],
+            "departmentID": 1,
+            "floor": 1,
+            "building": 1
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>通过寝室ID查询宿舍详细信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Room_Detail_Byrid
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>room_id</strong>:寝室ID(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>account节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：账户id</li>
+		<li>balans：账户余额</li>
+		<li>status：账户状态</li>
+		<li>dayuse：当天用电量</li>
+		<li>monthuse：当月用电量</li>
+		<li>totaluse：总用电量</li>
+	</ul>
+	<p>
+		<strong>dev_channel节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：通道id</li>
+		<li>num：通道号</li>
+		<li>name：通道名称</li>
+		<li>status：通道状态，true代表开，false代表关</li>
+		<li>sd_status：锁定状态</li>
+	</ul>
+	<p>
+		<strong>meter_info节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：电表id</li>
+		<li>P_value：功率，单位W</li>
+		<li>V_value: 电压，单位V</li>
+		<li>I_value：电流，单位A</li>
+		<li>E_value：用电量，单位KW.h</li>
+		<li>PR_value：功率因数</li>
+	</ul>
+	<p>
+		<strong>room_stu节点说明</strong>：
+	</p>
+	<ul>
+		<li>studentID：学号</li>
+		<li>name：姓名</li>
+		<li>telephone：手机号</li>
+		<li>academy：学院</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "room_stu": [
+        {
+            "studentID": 2013301470005,
+            "name": "测试5",
+            "telephone": 11111111111,
+            "academy": "e1"
+        }
+    ],
+    "meter_info": [
+        {
+            "unit": "V",
+            "name": "电压",
+            "data_type": 1,
+            "value": "230.3"
+        },
+        {
+            "unit": "A",
+            "name": "电流",
+            "data_type": 2,
+            "value": "0.00"
+        },
+        {
+            "unit": "KW",
+            "name": "功率",
+            "data_type": 3,
+            "value": "0.000"
+        },
+        {
+            "unit": "",
+            "name": "功率因数",
+            "data_type": 4,
+            "value": "1.000"
+        },
+        {
+            "unit": "度",
+            "name": "电表值",
+            "data_type": 5,
+            "value": "0.000"
+        }
+    ],
+    "code": 1,
+    "dev_channel": [
+        {
+            "sd_status": 0,
+            "num": 1,
+            "name": "照明",
+            "id": 73,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        },
+        {
+            "sd_status": 0,
+            "num": 2,
+            "name": "插座",
+            "id": 74,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        },
+        {
+            "sd_status": 0,
+            "num": 3,
+            "name": "阳台",
+            "id": 75,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        },
+        {
+            "sd_status": 0,
+            "num": 4,
+            "name": "卫生间",
+            "id": 76,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        },
+        {
+            "sd_status": 0,
+            "num": 5,
+            "name": "备用",
+            "id": 77,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        },
+        {
+            "sd_status": 0,
+            "num": 6,
+            "name": "备用",
+            "id": 78,
+            "addr": "00000395",
+            "slc_id": 13,
+            "status": false
+        }
+    ],
+    "message": "Inquiry_RoomDetail_RoomId Success",
+    "account": [
+        {
+            "totaluse": 0,
+            "id": 13,
+            "monthuse": null,
+            "balans": 100,
+            "status": 0,
+            "dayuse": 0
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>通过学号查询宿舍详细信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Room_Detail_Bysid
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>studentID</strong>:学号(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>account节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：账户id</li>
+		<li>balans：账户余额</li>
+		<li>status：账户状态</li>
+		<li>dayuse：当天用电量</li>
+		<li>monthuse：当月用电量</li>
+		<li>totaluse：总用电量</li>
+	</ul>
+	<p>
+		<strong>dev_channel节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：通道id</li>
+		<li>num：通道号</li>
+		<li>name：通道名称</li>
+		<li>status：通道状态，true代表开，false代表关</li>
+	</ul>
+	<p>
+		<strong>meter_info节点说明</strong>：
+	</p>
+	<ul>
+		<li>id：电表id</li>
+		<li>P_value：功率，单位W</li>
+		<li>V_value: 电压，单位V</li>
+		<li>I_value：电流，单位A</li>
+		<li>E_value：用电量，单位KW.h</li>
+		<li>PR_value：功率因数</li>
+	</ul>
+	<p>
+		<strong>room_stu节点说明</strong>：
+	</p>
+	<ul>
+		<li>studentID：学号</li>
+		<li>name：姓名</li>
+		<li>telephone：手机号</li>
+		<li>academy：学院</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "room_stu": [
+        {
+            "studentID": null,
+            "name": "cc",
+            "telephone": null,
+            "academy": null
+        }
+    ],
+    "meter_info": [
+        {
+            "unit": "V",
+            "name": "电压",
+            "id": 1,
+            "value": "240.7"
+        },
+        {
+            "unit": "A",
+            "name": "电流",
+            "id": 2,
+            "value": "0.00"
+        },
+        {
+            "unit": "KW",
+            "name": "功率",
+            "id": 3,
+            "value": "0.000"
+        },
+        {
+            "unit": "",
+            "name": "功率因数",
+            "id": 4,
+            "value": "1.000"
+        },
+        {
+            "unit": "度",
+            "name": "电表值",
+            "id": 5,
+            "value": "0.000"
+        }
+    ],
+    "code": 1,
+    "dev_channel": [
+        {
+            "num": 1,
+            "name": "照明",
+            "id": 1,
+            "status": false
+        },
+        {
+            "num": 2,
+            "name": "插座",
+            "id": 2,
+            "status": false
+        },
+        {
+            "num": 3,
+            "name": "阳台",
+            "id": 3,
+            "status": false
+        },
+        {
+            "num": 4,
+            "name": "卫生间",
+            "id": 4,
+            "status": false
+        },
+        {
+            "num": 5,
+            "name": "备用",
+            "id": 5,
+            "status": false
+        },
+        {
+            "num": 6,
+            "name": "备用",
+            "id": 6,
+            "status": false
+        }
+    ],
+    "message": "Inquiry_RoomDetail_RoomId Success",
+    "account": [
+        {
+            "totaluse": null,
+            "id": 1,
+            "monthuse": 0,
+            "balans": 2,
+            "status": 0,
+            "dayuse": 0
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>查询电量信息（功率、电量、电压、电流、功率因数、用电量）
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Ammeter_History
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>room_id</strong>:宿舍号(必填项)</li>
+		<li><strong>data_type</strong>:数据类型(必填项)，1：电压；2：电流；3：功率；4：功率因数；5：电表值；6：用电量</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>day_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<p>
+		<strong>week_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<p>
+		<strong>month_data节点说明</strong>：
+	</p>
+	<ul>
+		<li>update_time：采集时间</li>
+		<li>data：数据</li>
+		<li>x：顺序值</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "day_data": [
+        {
+            "update_time": "2017-08-30 16:01:00",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-30 15:01:00",
+            "data": "0.000",
+            "x": 2
+        },
+        {
+            "update_time": "2017-08-30 14:01:00",
+            "data": "0.000",
+            "x": 3
+        },
+        {
+            "update_time": "2017-08-30 13:01:00",
+            "data": "0.000",
+            "x": 4
+        },
+        {
+            "update_time": "2017-08-30 12:01:00",
+            "data": "0.000",
+            "x": 5
+        },
+        {
+            "update_time": "2017-08-30 11:01:00",
+            "data": "0.000",
+            "x": 6
+        },
+        {
+            "update_time": "2017-08-30 10:01:00",
+            "data": "0.000",
+            "x": 7
+        },
+        {
+            "update_time": "2017-08-30 09:01:00",
+            "data": "0.000",
+            "x": 8
+        },
+        {
+            "update_time": "2017-08-30 08:01:00",
+            "data": "0.000",
+            "x": 9
+        },
+        {
+            "update_time": "2017-08-30 07:01:00",
+            "data": "0.000",
+            "x": 10
+        },
+        {
+            "update_time": "2017-08-30 06:01:00",
+            "data": "0.000",
+            "x": 11
+        },
+        {
+            "update_time": "2017-08-30 05:01:00",
+            "data": "0.000",
+            "x": 12
+        },
+        {
+            "update_time": "2017-08-30 04:01:00",
+            "data": "0.000",
+            "x": 13
+        },
+        {
+            "update_time": "2017-08-30 03:01:00",
+            "data": "0.000",
+            "x": 14
+        },
+        {
+            "update_time": "2017-08-30 02:01:00",
+            "data": "0.000",
+            "x": 15
+        },
+        {
+            "update_time": "2017-08-30 01:01:00",
+            "data": "0.000",
+            "x": 16
+        },
+        {
+            "update_time": "2017-08-30 00:01:00",
+            "data": "0.000",
+            "x": 17
+        },
+        {
+            "update_time": "2017-08-29 23:01:00",
+            "data": "0.000",
+            "x": 18
+        },
+        {
+            "update_time": "2017-08-29 22:01:00",
+            "data": "0.000",
+            "x": 19
+        },
+        {
+            "update_time": "2017-08-29 21:01:00",
+            "data": "0.000",
+            "x": 20
+        },
+        {
+            "update_time": "2017-08-29 20:01:00",
+            "data": "0.000",
+            "x": 21
+        },
+        {
+            "update_time": "2017-08-29 19:01:00",
+            "data": "0.000",
+            "x": 22
+        },
+        {
+            "update_time": "2017-08-29 18:01:00",
+            "data": "0.000",
+            "x": 23
+        },
+        {
+            "update_time": "2017-08-29 17:01:00",
+            "data": "0.000",
+            "x": 24
+        }
+    ],
+    "message": "Inquiry_Ammeter_History success",
+    "week_data": [
+        {
+            "update_time": "2017-08-30 00:01:00.0",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-29 00:01:00.0",
+            "data": "0.000",
+            "x": 2
+        }
+    ],
+    "month_data": [
+        {
+            "update_time": "2017-08-30 00:01:00.0",
+            "data": "0.000",
+            "x": 1
+        },
+        {
+            "update_time": "2017-08-29 00:01:00.0",
+            "data": "0.000",
+            "x": 2
+        }
+    ]
+}
+</code>
+	</pre>
+	
+		<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询学生信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Student_Info
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>departmentID</strong>:学部ID(必填项)，1代表工学部，2代表文理学部</li>
+		<li><strong>building</strong>:宿舍楼(必填项)，1代表1舍，2代表2舍</li>
+		<li><strong>floor</strong>:楼层(必填项)，0代表所有楼层，1代表1层，2代表2层</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>departmentName：学部名</li>
+		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
+		<li>floor: 楼层</li>
+		<li>room_id: 寝室ID</li>
+		<li>dormitory: 寝室号</li>
+		<li>sublist：子list</li>
+		<li>studentID: 学号</li>
+		<li>name: 姓名</li>
+		<li>academy: 学院</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "查询数据成功",
+    "info": [
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1436,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1101",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1437,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1102",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1438,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1103",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1439,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1104",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1440,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1105",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1441,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1106",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1442,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1107",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1443,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1108",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1444,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1109",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1445,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1110",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1446,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1111",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1447,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1112",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1448,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1113",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1449,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1114",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1450,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1115",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1451,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1116",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1452,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1117",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1453,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1118",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1454,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1119",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1455,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1120",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1456,
+            "building_name": "一号学生公寓",
+            "sublist": [],
+            "departmentID": 1,
+            "dormitory": "1121",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1457,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504005,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "古再丽努尔·图尔荪",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504011,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "黄小玲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504061,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "秦乐瑶",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115525020,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李卉娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1122",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1458,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504021,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "梁洁",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504022,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "岳娜",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504023,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "何鸿云",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504079,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "姚开芳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1123",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1459,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504006,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "曹思桥",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504007,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "程伟丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504008,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "杨亚茹",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504010,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "韦琛谊",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1124",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1460,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504048,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "谢婧",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504053,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "韩倩云",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504054,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504056,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "刘雅",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1125",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1461,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504032,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张雪",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504057,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "尹晓斐",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504073,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李亚妮",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504082,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马继菲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1126",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1462,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504020,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "鲁作晶",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504036,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "祁冬梅",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504047,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "殷翔燕",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504075,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "王云芳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1127",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1463,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504038,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "赵建云",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504049,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "陈敏",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504058,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "王娜",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504066,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "刘敏",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1128",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1464,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504055,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马莉",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504059,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "罗芳芳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504065,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "柳璐",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504078,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "赵旭春",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1129",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1465,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504067,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "任娟娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504069,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李苗苗",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504070,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李菲菲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504071,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "高燕飞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1130",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1466,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504026,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "杜升丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504029,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "史艳丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504030,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李建行",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504031,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "白娇",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1131",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1467,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504025,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "杨霞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504028,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "朱丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504062,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "郭靓",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504063,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "邓亚萍",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1132",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1468,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504012,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "冯鑫",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504013,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "徐宁粒",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504027,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "唐莉莉",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504104,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "柳玉",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1133",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1469,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504039,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "刘光菊",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504060,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "彭洋",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504074,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张丽丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504081,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马芊芊",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1134",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1470,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504086,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张成丽",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504087,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "高永霞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504151,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马月霞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504156,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "侯瑞玲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1135",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1471,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504100,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张丽君",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504109,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "彭亚萍",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504110,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "谈守香",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504124,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马晶",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1136",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1472,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504083,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "马芳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504089,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "王娟娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504094,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "阿热孜古力·吐尔孙",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504157,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "蔡玉荣",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1137",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1473,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504140,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "王莹",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504141,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "柳雯文",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504144,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "沈娜",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504148,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "董海玉",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1138",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1474,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504096,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "王馨悦",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504115,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李俏飞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504116,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "张思睿",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504159,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "韩磊",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1139",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1475,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504106,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "肖娣",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504126,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "赵凤娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504133,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "高彩霞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504155,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "杨玉萍",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1140",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1476,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504092,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "薛梓旭",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504098,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "龚佳佳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504102,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "雷艳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504119,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "赵文艳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1141",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1477,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504105,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "刘洁琼",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504112,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "徐晨",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504131,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "陈明霞",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504135,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "蒲秀娟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1142",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1478,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504101,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "陈冬玲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504117,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "梁雪",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504121,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李慧美",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504127,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "袁懿芸",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1143",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1479,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504088,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "朵华毛吉",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504108,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "尹莉梅",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504123,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "叶玉檠",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504142,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "崔艺敏",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1144",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1480,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504153,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "赵学艳",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504158,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "刘信玲",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115515004,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "徐影杰",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115519015,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "雷琴",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1145",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1481,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504107,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "梁海燕",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504125,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "何归琴",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504136,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "吕蕊",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504138,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "郭雪",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1146",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1482,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115504120,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "陈志秀",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504137,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "屈韶",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504146,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "李晶晶",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115504152,
+                    "aname": "针灸推拿学",
+                    "cname": "和平校区",
+                    "name": "祁先伟",
+                    "bid": 11,
+                    "aid": 40,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1147",
+            "floor": 8,
+            "building": 3
+        },
+        {
+            "departmentName": "和平校区",
+            "floor_name": "一号1层",
+            "room_id": 1483,
+            "building_name": "一号学生公寓",
+            "sublist": [
+                {
+                    "studentID": 115522006,
+                    "aname": "康复治疗学",
+                    "cname": "和平校区",
+                    "name": "谭晓",
+                    "bid": 11,
+                    "aid": 41,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115522013,
+                    "aname": "康复治疗学",
+                    "cname": "和平校区",
+                    "name": "马艳",
+                    "bid": 11,
+                    "aid": 41,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                },
+                {
+                    "studentID": 115522019,
+                    "aname": "康复治疗学",
+                    "cname": "和平校区",
+                    "name": "张文凤",
+                    "bid": 11,
+                    "aid": 41,
+                    "academy": "针灸推拿学院",
+                    "cid": 1
+                }
+            ],
+            "departmentID": 1,
+            "dormitory": "1148",
+            "floor": 8,
+            "building": 3
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>通过学号查询学生详细信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Student_Detail_BySid
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>studentID</strong>:学号(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>studentID: 学号</li>
+		<li>major: 专业</li>
+		<li>departmentID：学部ID，1代表工学部，2代表文理学部</li>
+		<li>floor: 楼层</li>
+		<li>dormitory: 寝室号</li>
+		<li>academy: 学院</li>
+		<li>telephone: 手机号</li>
+		<li>building: 宿舍楼代号，1代表1舍，2代表2舍</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "查询成功",
+    "info": [
+        {
+            "studentID": 115516005,
+            "major": "临床医学",
+            "departmentID": "和平校区",
+            "dormitory": "3102",
+            "name": "刘玉兄",
+            "telephone": "17793501270",
+            "floor": "三号1层",
+            "academy": "临床医学院",
+            "building": "三号学生公寓"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>管理员查询楼栋三相电表信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_3Ammeter_Current
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>departmentID</strong>:学部ID(必填项)</li>
+		<li><strong>building</strong>:宿舍楼ID(必填项)</li>
+		<li><strong>floor</strong>:楼层ID(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>aV_value: a相电压</li>
+		<li>bV_value: b相电压</li>
+		<li>cV_value：c相电压</li>
+		<li>aA_value: a相电流</li>
+		<li>bA_value: b相电流</li>
+		<li>cA_value: c相电流</li>
+		<li>aP_value: 有功功率</li>
+		<li>rP_value: 无功功率</li>
+		<li>E_value: 总用电量</li>
+		<li>E_day_value: 本日用电量</li>
+		<li>E_month_value: 本月用电量</li>
+		
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_3Ammeter_Current Success",
+    "info": [
+        {
+            "cV_value": "1.0V",
+            "bA_value": "1.23A",
+            "rP_value": "1.0W",
+            "PR_value": 1,
+            "E_value": "5.01KW.H",
+            "bV_value": "1.1V",
+            "aA_value": "1.0A",
+            "cA_value": "1.0A",
+            "aV_value": "1.1V",
+            "E_day_value": "1.0KW.H",
+            "aP_value": "1.22W",
+            "E_month_value": "5.0KW.H"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>用户(学生或者管理员)通过用户名查询个人信息
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_StudentInfo_Byusername
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>username</strong>:用户名(必填项)</li>
+		<li><strong>role</strong>:角色(必填项)</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明（学生）</strong>：
+	</p>
+	<ul>
+		<li>studentID: 学号</li>
+		<li>room_id: 宿舍房间ID</li>
+		<li>IDnumber:身份证号</li>
+		<li>major: 专业</li>
+		<li>name: 姓名</li>
+		<li>academy: 学院</li>
+		<li>telephone: 电话号码</li>
+		
+	</ul>
+	<p>
+		<strong>info节点说明（管理员）</strong>：
+	</p>
+	<ul>
+		<li>sex: 性别，0男性，1女性</li>
+		<li>tel_num: 手机号</li>
+		<li>email: 邮箱</li>
+		<li>username: 用户名</li>
+		<li>status: 账号状态，1正常，0停用</li>
+	</ul>
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_StudentInfo_Byusername Success",
+    "info": [
+        {
+            "studentID": 2013301470027,
+            "room_id": 21,
+            "IDnumber": 0,
+            "major": "66",
+            "name": "王晓青",
+            "telephone": 0,
+            "academy": "动力与机械学院"
+        }
+    ]
+}
+</code>
+	</pre>
+	
+	<h3 id="检查账号是否被注册">
+		<a name="检查账号是否被注册" href="#检查账号是否被注册"></a>用户通过房间ID查询操作日志
+	</h3>
+	<h4 id="url">
+		<a name="url" href="#url"></a>URL
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>/api/account/checkUser
+</code></pre>">/api/inquiry/Inquiry_Channel_Control_Log
+</code>
+	</pre>
+	<h4 id="method">
+		<a name="method" href="#method"></a>METHOD
+	</h4>
+	<pre>
+		<code data-origin="<pre><code>GET
+</code></pre>">POST
+</code>
+	</pre>
+	<h4 id="参数">
+		<a name="参数" href="#参数"></a>参数
+	</h4>
+	<ul>
+		<li><strong>token</strong>:令牌符(必填项)</li>
+		<li><strong>room_id</strong>:房间ID(必填项)</li>
+		<li><strong>inquirytime</strong>:查询时间，格式yyyy-MM-dd，比如要查询2017年7月份的则为2017-07-01，八月为2017-08-01</li>
+	</ul>
+	<h4 id="响应">
+		<a name="响应" href="#响应"></a>响应
+	</h4>
+	<h5 id="结果说明">
+		<a name="结果说明" href="#结果说明"></a>结果说明
+	</h5>
+	<p>
+		<strong>节点说明</strong>：
+	</p>
+	<ul>
+		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
+		<li>message：响应结果的文字说明</li>
+	</ul>
+	<p>
+		<strong>info节点说明</strong>：
+	</p>
+	<ul>
+		<li>user_id: 用户id</li>
+		<li>port: 通道号</li>
+		<li>name: 名字</li>
+		<li>created_at: 时间</li>
+		<li>message: 操作信息</li>
+		<li>status: 操作动作（打开或者关闭）</li>
+	</ul>
+	<p>
+		<strong>name+created_at+message构成完整信息</strong>：
+	</p>
+	
+	<h5 id="简要示例">
+		<a name="简要示例" href="#简要示例"></a>简要示例
+	</h5>
+	<pre>
+		<code
+			data-origin="<pre><code>{
+    &quot;code&quot;:1,
+    &quot;message&quot;: &quot;registered&quot;
+}
+</code></pre>">{
+    "code": 1,
+    "message": "Inquiry_StudentInfo_Byusername Success",
+    "info": [
+        {
+            "user_id": 123,
+            "port": 1,
+            "name": null,
+            "created_at": "2017-07-07 09:50:47",
+            "message": "关闭了照明开关",
+            "status": false
+        }
+    ]
+}
+</code>
+	</pre>
+	<!-- <footer
+		style="position: fixed; font-size: .8em; text-align: right; bottom: 0px; margin-left: -25px; height: 20px; width: 100%;">
+		generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a>
+	</footer> -->
+</body>
+</html>

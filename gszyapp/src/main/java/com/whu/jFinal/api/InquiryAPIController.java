@@ -1,5 +1,6 @@
 package com.whu.jFinal.api;
 
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,17 +31,17 @@ public class InquiryAPIController extends BaseAPIController {
 	
 	public void Inquiry_Department_Info() {
 
-		String sql = "SELECT distinct a.departmentID,a.departmentName FROM stp_roominfo as a";
+		String sql = "SELECT a.id as departmentID,a.name as departmentName FROM stp_floor as a where a.pid=0 order by a.id";
 		List<Record> area = Db.find(sql);
 		List<Record> building=null;
 		List<Record> floor=null;
 		for(int i=0;i<area.size();i++) {
 		
-			String sql1 = "SELECT distinct a.building,a.building_name FROM stp_roominfo as a where a.departmentID=? order by a.building asc";
+			String sql1 = "SELECT a.id as building,a.name as building_name FROM stp_floor as a where a.pid=? order by a.id";
 			building = Db.find(sql1,area.get(i).getInt("departmentID"));
 			for(int j=0;j<building.size();j++) {
-				String sql2 = "SELECT distinct a.floor,a.floor_name FROM stp_roominfo as a where a.departmentID=? and a.building=? order by a.floor asc";
-				floor = Db.find(sql2,area.get(i).getInt("departmentID"),building.get(j).getInt("building"));
+				String sql2 = "SELECT a.id as floor,a.name as floor_name FROM stp_floor as a where a.pid=? order by a.id";
+				floor = Db.find(sql2,building.get(j).getInt("building"));
 				building.get(j).set("sublist", floor);
 			}
 			area.get(i).set("sublist", building);
@@ -57,7 +58,7 @@ public class InquiryAPIController extends BaseAPIController {
 		renderJson(response);
 
 	}
-	
+	@Clear
 	public void Inquiry_Room_Info() {
 
 		String departmentID = getPara("departmentID");
@@ -116,10 +117,10 @@ public class InquiryAPIController extends BaseAPIController {
 				return null;
 			}
 		});		
-		String sql = "SELECT a.room_id,a.dormitory,b.`status` FROM stp_roominfo as a,stp_rooms as b where a.departmentID=? and a.building=? and a.floor=? and b.id=a.room_id order by a.dormitory";
+		String sql = "SELECT a.id as room_id,a.room_sn as dormitory,b.is_online as `status` FROM stp_room as a,stp_slc_device as b where a.id=b.room_id and a.floor_id=? order by a.room_sn";
 		List<Record> roomlist=null;
 		for(int i=0;i<list.size();i++) {
-			roomlist=Db.find(sql,list.get(i).getInt("departmentID"),list.get(i).getInt("building"),list.get(i).getInt("floor"));
+			roomlist=Db.find(sql,list.get(i).getInt("floor"));
 			list.get(i).set("sublist", roomlist);
 		}
 		response.setInfo(list);
@@ -136,22 +137,22 @@ public class InquiryAPIController extends BaseAPIController {
 		List<Record> nowRoom2;
 		List<Record> nowRoom3;
 		if (!notNull(Require.me()
-				.put(room_id,"room_id can not be null")))
+				.put(room_id,"房间ID为空")))
 		{
 			return;
 		}
-		
-		String sql = "SELECT a.id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse,c.E_value as totaluse FROM stp_rooms as a,stp_api_ammeter_this_day_data as b,"
-				+ "stp_api_ammeter_this_month_data as c where a.id=b.room_id and b.room_id=c.room_id and c.room_id=?";
+		String sql = "SELECT a.id,b.balans,b.status,c.EletricityValue as dayuse,c.EletricityValue as monthuse,c.EletricityValue as totaluse FROM stp_ammeter_device as a,stp_room_balans as b,stp_ammeter_current as c where a.room_id=? and a.room_id=b.room_id and c.sno=a.sno ";
+		/*String sql = "SELECT a.id,a.balans,a.status,b.E_usevalue as dayuse,c.E_usevalue as monthuse,c.E_value as totaluse FROM stp_rooms as a,stp_api_ammeter_this_day_data as b,"
+				+ "stp_api_ammeter_this_month_data as c where a.id=b.room_id and b.room_id=c.room_id and c.room_id=?";*/
 		nowRoom = Db.find(sql,room_id);
 		
-		String sql1 = "SELECT b.id,b.num,b.name,b.status,c.addr,b.slc_id,d.status as sd_status FROM stp_slc_channel as b,stp_slc as c,stp_rooms as d where c.room_id=? and c.id=b.slc_id and d.id=c.room_id";
+		String sql1 = "SELECT b.id,b.number,b.name,b.`status`,c.addr,b.slc_id,b.sd_status FROM stp_slc_channel as b,stp_slc_device as c where b.room_id=? and c.room_id=b.room_id";
 		nowRoom1 = Db.find(sql1,room_id);
 		
-		String sql2 = "SELECT a.id,a.V_value,a.I_value,a.P_value,a.PR_value,a.E_value FROM stp_electricity_current as a where a.room_id=?";
+		String sql2 = "SELECT a.id,a.U as V_value,a.I as I_value,a.Power as P_value,a.PowerRate as PR_value,a.EletricityValue as E_value FROM stp_ammeter_current as a,stp_ammeter_device as b where a.sno=b.sno and b.room_id=?";
 		nowRoom2 = Db.find(sql2,room_id);
 		
-		String sql3 = "SELECT name,academy,studentID,telephone FROM stp_hp_student where room_id=?";
+		String sql3 = "SELECT a.name,b.name as academy,a.stu_id as studentID,a.tel_num FROM stp_app_student as a,stp_major as b where room_id=? and a.major_id=b.id";
 		nowRoom3 = Db.find(sql3,room_id);
 		
 		InquiryRoomIdResponse response = new InquiryRoomIdResponse();
@@ -159,6 +160,27 @@ public class InquiryAPIController extends BaseAPIController {
 			response.setCode(Code.FAIL).setMessage("查询结果为空");
 			renderJson(response);
 			return;
+		}
+		if(nowRoom.isEmpty()) {
+			Record dev = new Record();
+			dev.set("id", 1);
+			dev.set("balans", 100.00);
+			dev.set("status",true);
+			dev.set("dayuse", 0.00);
+			dev.set("monthuse", 0.00);
+			dev.set("totaluse", 0.00);
+			nowRoom.add(dev);
+		}
+		if(nowRoom2.isEmpty()) {
+			BigDecimal a= new BigDecimal("0.00");
+			Record dev = new Record();
+			dev.set("id", 1);
+			dev.set("V_value", a);
+			dev.set("I_value",a);
+			dev.set("P_value", a);
+			dev.set("PR_value", a);
+			dev.set("E_value", a);
+			nowRoom2.add(0, dev);
 		}
 		List<Record> list = new ArrayList<>();
 		for(int i=0;i<5;i++) {
@@ -181,7 +203,7 @@ public class InquiryAPIController extends BaseAPIController {
 				}
 			}else if(i==2) {
 				info.set("name", "功率");
-				info.set("unit","KW");
+				info.set("unit","W");
 				if(nowRoom2.get(0).getBigDecimal("P_value")==null) {
 					info.set("value",null);
 				}else {
@@ -217,7 +239,7 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	public void Inquiry_Room_Detail_Bysid() {
+	/*public void Inquiry_Room_Detail_Bysid() {
 
 		String studentID = getPara("studentID");
 		List<Record> nowRoom;
@@ -288,15 +310,16 @@ public class InquiryAPIController extends BaseAPIController {
 		renderJson(response);
 
 	}
-	
+	*/
+	@Clear
 	public void Inquiry_Ammeter_History() {
 
 		String room_id = getPara("room_id");
-		String data_type = getPara("data_type");
+		String datapoint = getPara("datapoint");
 
 		if (!notNull(Require.me()
 				.put(room_id,"房间代码为空")
-				.put(data_type,"数据类型为空")
+				.put(datapoint,"数据类型为空")
 				))
 		{
 			return;
@@ -312,7 +335,7 @@ public class InquiryAPIController extends BaseAPIController {
 				try {
 					proc = arg0.prepareCall("{call inquiry_ammeter_history_day(?,?)}");
 					proc.setString(1, room_id);
-					proc.setString(2, data_type);
+					proc.setString(2, datapoint);
 					boolean hadResults = proc.execute();
 					while (hadResults) {
 						ResultSet rs = proc.getResultSet();
@@ -321,7 +344,7 @@ public class InquiryAPIController extends BaseAPIController {
 							Record dev = new Record();
 							dev.set("x", i);
 							dev.set("data", rs.getString(2));
-							dev.set("update_time", rs.getString(1).substring(0, 19));
+							dev.set("update_time", rs.getString(1).substring(0,19));
 							list.add(dev);
 							i++;
 						}
@@ -351,7 +374,7 @@ public class InquiryAPIController extends BaseAPIController {
 				try {
 					proc = arg0.prepareCall("{call inquiry_ammeter_history_week(?,?)}");
 					proc.setString(1, room_id);
-					proc.setString(2, data_type);
+					proc.setString(2, datapoint);
 					boolean hadResults = proc.execute();
 					while (hadResults) {
 						ResultSet rs = proc.getResultSet();
@@ -390,7 +413,7 @@ public class InquiryAPIController extends BaseAPIController {
 				try {
 					proc = arg0.prepareCall("{call inquiry_ammeter_history_month(?,?)}");
 					proc.setString(1, room_id);
-					proc.setString(2, data_type);
+					proc.setString(2, datapoint);
 					boolean hadResults = proc.execute();
 					while (hadResults) {
 						ResultSet rs = proc.getResultSet();
@@ -427,7 +450,7 @@ public class InquiryAPIController extends BaseAPIController {
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
-	
+	@Clear
 	public void Inquiry_Student_Info() {
 
 		String departmentID = getPara("departmentID");
@@ -464,10 +487,12 @@ public class InquiryAPIController extends BaseAPIController {
 							Record dev = new Record();
 							dev.set("departmentID", rs.getInt(1));
 							dev.set("departmentName", rs.getString(2));
-							dev.set("building", rs.getString(3));
-							dev.set("floor", rs.getString(4));
-							dev.set("dormitory", rs.getString(5));
-							dev.set("room_id", rs.getInt(6));
+							dev.set("building", rs.getInt(3));
+							dev.set("building_name", rs.getString(4));
+							dev.set("floor", rs.getInt(5));
+							dev.set("floor_name", rs.getString(6));
+							dev.set("room_id", rs.getInt(7));
+							dev.set("dormitory", rs.getString(8));
 							list.add(dev);
 						}
 						hadResults = proc.getMoreResults();
@@ -487,7 +512,7 @@ public class InquiryAPIController extends BaseAPIController {
 			}
 		});
 		List<Record> student=null;
-		String sql = "SELECT  a.name,a.studentID,a.academy FROM stp_hp_student as a where a.room_id=?";
+		String sql = "SELECT  a.id AS aid,a.`name` as aname,b.id as bid,b.`name` as academy,c.id as cid,c.`name` as cname,d.`name`,d.stu_id as studentID from stp_major as a INNER JOIN stp_major as b INNER JOIN stp_major as c INNER JOIN stp_app_student as d where d.room_id=? and d.major_id=a.id AND a.pid=b.id AND b.pid=c.id";
 		for(int i=0;i<list.size();i++) {
 			student=Db.find(sql,list.get(i).getInt("room_id"));
 			list.get(i).set("sublist", student);
@@ -497,7 +522,7 @@ public class InquiryAPIController extends BaseAPIController {
 		renderJson(response);// 返回数据模型 response其实是一个模型
 
 	}
-	
+	@Clear
 	public void Inquiry_Student_Detail_BySid() {
 
 		String studentID = getPara("studentID");
@@ -510,15 +535,56 @@ public class InquiryAPIController extends BaseAPIController {
 			return;
 		}
 		
-		String sql = "SELECT a.studentID,a.academy,a.major,a.telephone,b.departmentID,b.building,b.dormitory FROM stp_hp_student as a,stp_roominfo as b where a.studentID=? and b.room_id=a.room_id";
-		List<Record> nowBuilding = Db.find(sql,studentID);
+		List<Record> list = new ArrayList<>();
+		Db.execute(new ICallback() {
+			@Override
+			public Object call(Connection arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				CallableStatement proc = null;
+				try {
+					proc = arg0.prepareCall("{call inquiry_studentinfo_bysid(?)}");
+					proc.setString(1, studentID);
+					boolean hadResults = proc.execute();
+					while (hadResults) {
+						ResultSet rs = proc.getResultSet();
+
+						while (rs != null && rs.next()) {
+							Record dev = new Record();
+							dev.set("major", rs.getString(1));
+							dev.set("academy", rs.getString(2));
+							dev.set("name", rs.getString(3));
+							dev.set("studentID", rs.getLong(4));
+							dev.set("telephone", rs.getString(5));
+							dev.set("floor", rs.getString(6));
+							dev.set("building", rs.getString(7));
+							dev.set("departmentID", rs.getString(8));
+							dev.set("dormitory", rs.getString(9));
+							list.add(dev);
+						}
+						hadResults = proc.getMoreResults();
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					if (proc != null) {
+						proc.close();
+					}
+					if (arg0 != null) {
+						arg0.close();
+					}
+				}
+				return null;
+			}
+		});
+		
 		InquiryDBResponse response = new InquiryDBResponse();
-		if (nowBuilding == null) {
+		if (list.isEmpty()) {
 			response.setCode(Code.FAIL).setMessage("查询数据为空");
 			renderJson(response);
 			return;
 		}
-		response.setInfo(nowBuilding);
+		response.setInfo(list);
 		response.setMessage("查询成功");
 		renderJson(response);
 
@@ -598,6 +664,7 @@ public class InquiryAPIController extends BaseAPIController {
 	}
 	
 	//仅限学生用户查询
+	@Clear
 	public void Inquiry_StudentInfo_Byusername() {
 
 		String username = getPara("username");
@@ -615,7 +682,7 @@ public class InquiryAPIController extends BaseAPIController {
 		if(role.equals("0")) {
 			String sql = "SELECT b.username,b.studentID,b.userId,b.status from stp_api_user as b where b.username=?";
 	        list = Db.find(sql,username);
-		}else {	
+		}else if(role.equals("4")){	
 		Db.execute(new ICallback() {
 			@Override
 			public Object call(Connection arg0) throws SQLException {
@@ -854,7 +921,7 @@ public class InquiryAPIController extends BaseAPIController {
 
 	}
 	
-	
+	@Clear
 	public void Inquiry_search() {
 
 		String info = getPara("info");
@@ -886,6 +953,7 @@ public class InquiryAPIController extends BaseAPIController {
 							dev.set("floor", rs.getInt(5));
 							dev.set("floor_name", rs.getString(6));
 							dev.set("room_id", rs.getInt(7));
+							dev.set("room_sn", rs.getString(8));
 							list.add(dev);
 						}
 						hadResults = proc.getMoreResults();
@@ -927,6 +995,7 @@ public class InquiryAPIController extends BaseAPIController {
 							dev.set("floor", rs.getInt(7));
 							dev.set("floor_name", rs.getString(8));
 							dev.set("room_id", rs.getInt(9));
+							dev.set("room_sn", rs.getString(10));
 							list1.add(dev);
 						}
 						hadResults = proc.getMoreResults();

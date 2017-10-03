@@ -185,7 +185,7 @@ public class AccountAPIController extends BaseAPIController {
             response.setCode(Code.FAIL).setMessage("用户名出错");
             renderJson(response);
             return;
-        }else if(password.equals(nowUser.getStr("password"))) {
+        }else if(!password.equals(nowUser.getStr("password"))) {
         	 response.setCode(Code.FAIL).setMessage("密码出错");
              renderJson(response);
              return;
@@ -247,10 +247,10 @@ public class AccountAPIController extends BaseAPIController {
         if(user.getInt("role")==0) {
         	renderJson(response.setCode(Code.FAIL).setMessage("管理员账户暂没开通"));
         }else {
-        	long stu_id=user.getLong("studentID");
+        	long stu_id=user.getLong("username");
             
-            if(Db.find("SELECT *FROM stp_hp_student WHERE studentID=? and telephone=?",stu_id,tel).isEmpty()) {
-            	Db.update("UPDATE stp_hp_student set telephone=? where studentID=?", tel,stu_id);
+            if(Db.find("SELECT *FROM stp_app_student WHERE stu_id=? and tel_num=?",stu_id,tel).isEmpty()) {
+            	Db.update("UPDATE stp_app_student set tel_num=? where stu_id=?", tel,stu_id);
             }else {
             	renderJson(response.setCode(Code.FAIL).setMessage("电话号码已占用"));
             }
@@ -312,17 +312,23 @@ public class AccountAPIController extends BaseAPIController {
     	String oldPwd = getPara("oldPwd");
     	String newPwd = getPara("newPwd");
     	if(!notNull(Require.me()
-    			.put(oldPwd, "old password can not be null")
-    			.put(newPwd, "new password can not be null"))){
+    			.put(oldPwd, "旧密码为空")
+    			.put(newPwd, "新密码为空"))){
     		return;
     	}
     	//用户真实的密码
         User nowUser = getUser();
-    	if(StringUtils.encodePassword(nowUser.getStr("salt")+oldPwd, "md5").equalsIgnoreCase(nowUser.getStr(PASSWORD))){
+    	/*if(StringUtils.encodePassword(nowUser.getStr("salt")+oldPwd, "md5").equalsIgnoreCase(nowUser.getStr(PASSWORD))){
     		boolean flag = nowUser.set(User.PASSWORD, StringUtils.encodePassword(nowUser.getStr("salt")+newPwd, "md5")).update();
             renderJson(new BaseResponse(flag?Code.SUCCESS:Code.FAIL, flag?"success":"failed"));
     	}else{
             renderJson(new BaseResponse(Code.FAIL, "oldPwd is invalid"));
+    	}*/
+        if(oldPwd.equalsIgnoreCase(nowUser.getStr(PASSWORD))){
+    		boolean flag = nowUser.set(User.PASSWORD, newPwd).update();
+            renderJson(new BaseResponse(flag?Code.SUCCESS:Code.FAIL, flag?"修改成功":"修改失败"));
+    	}else{
+            renderJson(new BaseResponse(Code.FAIL, "旧密码错误"));
     	}
     }
     

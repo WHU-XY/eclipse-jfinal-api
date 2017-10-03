@@ -151,7 +151,7 @@
 
      
       
-      <Context docBase="STEDU" path="/STEDU" reloadable="true" source="org.eclipse.jst.jee.server:STEDU"/></Host>
+      <Context docBase="gszyapp" path="/gszyapp" reloadable="true" source="org.eclipse.jst.jee.server:gszyapp"/></Host>
     </Engine>
   </Service>
 </Server>

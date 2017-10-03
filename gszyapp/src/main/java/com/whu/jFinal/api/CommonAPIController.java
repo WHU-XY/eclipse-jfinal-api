@@ -37,7 +37,7 @@ public class CommonAPIController extends BaseAPIController{
         //内容
         String suggestion=getPara("suggestion");
         if(!notNull(Require.me()
-                .put(suggestion, "suggestion can not be null"))){
+                .put(suggestion, "内容为空"))){
             return;
         }
 

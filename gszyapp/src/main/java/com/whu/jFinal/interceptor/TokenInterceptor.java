@@ -31,12 +31,14 @@ public class TokenInterceptor implements Interceptor {
         }
         
         User user = TokenManager.getMe().validate(token);
-        if (user == null) {
+        /*if (user == null) {
             controller.renderJson(new BaseResponse(Code.TOKEN_INVALID, "账号已登录"));
             return;
+        }*/
+        if(user!=null) {
+        	 controller.setAttr("user", user);
         }
-        
-        controller.setAttr("user", user);
+       
         ai.invoke();
     }
 }

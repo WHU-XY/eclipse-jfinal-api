@@ -1357,19 +1357,16 @@ footer {
 }
 </code></pre>">{
     "code": 1,
-    "message": "login success",
+    "message": "登录成功",
     "info": {
-        "role": 0,
-        "sex": 0,
-        "tel_num": "15927393976",
-        "avatar": "/images/defaultUserAvatar.jpg",
-        "creationDate": 1500601080413,
-        "userId": "e241111d4cc745e1b3a2495bdfe9b395",
-        "email": "2013@qq.com",
-        "username": "WHU_XY",
-        "status": 1
+        "updated_at": "2017-09-27 15:33:39",
+        "role_id": 1,
+        "created_at": "2017-09-26 23:29:46",
+        "login_num": null,
+        "id": 4212,
+        "username": "suntrans001"
     },
-    "token": "b9018f8b9dc64c298730a180d6c76d7d60YY9B"
+    "token": "e32680d5b7da49eeb34fa0fda8aef2a5P1dQKf"
 }
 </code>
 	</pre>
@@ -1391,103 +1388,14 @@ footer {
 		<strong>info节点说明</strong>：
 	</p>
 	<ul>
-		<li>userId：用户ID</li>
-		<li>username：用户名</li>
-		<li>email：邮箱</li>
-		<li>avatar: 头像地址</li>
-		<li>sex: 性别, 0表示女, 1表示男</li>
-		<li>status: 账号状态, 1表示启用(正常使用), 0表示禁用</li>
-		<li>creationDate: 注册时间</li>
+		<li>username: 用户名</li>
+		<li>role_id：用户角色ID,1:总管理员，2：运维人员，3：楼栋管理员，4：学生</li>
+		<li>id：用户ID</li>
+		<li>updated_at: 用户数据更新时间</li>
+		<li>created_at: 用户数据创建时间</li>
+		<li>login_num: 登录次数</li>
 	</ul>
-	<!-- <p>
-		<strong>constant节点说明</strong>:
-	</p>
-	<ul>
-		<li>resourceServer: 文件下载地址前缀，后接文件地址即可使用</li>
-	</ul> -->
-	<!-- <hr class="page">
-	<h3 id="查询用户资料">
-		<a name="查询用户资料" href="#查询用户资料"></a>查询用户资料
-	</h3>
-	<h4 id="url">
-		<a name="url" href="#url"></a>URL
-	</h4>
-	<pre>
-		<code data-origin="<pre><code>/api/account/profile
-</code></pre>">/api/account/profile
-</code>
-	</pre>
-	<h4 id="method">
-		<a name="method" href="#method"></a>METHOD
-	</h4>
-	<pre>
-		<code data-origin="<pre><code>GET(必须是get方法，否则请求出错)
-</code></pre>">GET(必须是get方法，否则请求出错)
-</code>
-	</pre>
-	<h4 id="参数">
-		<a name="参数" href="#参数"></a>参数
-	</h4>
-	<ul>
-		<li>token：令牌符（必需项）</li>
-		<li>userId：要查询的用户ID（可选项，如果没有则查询当前用户的信息）</li>
-	</ul>
-	<h4 id="响应">
-		<a name="响应" href="#响应"></a>响应
-	</h4>
-	<h5 id="结果说明">
-		<a name="结果说明" href="#结果说明"></a>结果说明
-	</h5>
-	<p>
-		<strong>节点说明</strong>：
-	</p>
-	<ul>
-		<li>code：表示响应结果状态，1表示查询成功，0表示未查询到信息</li>
-		<li>message：响应结果的文字说明</li>
-	</ul>
-	<p>
-		<strong>datum节点说明</strong>：
-	</p>
-	<ul>
-		<li>userId：用户ID</li>
-		<li>username：用户名</li>
-		<li>email：邮箱</li>
-		<li>avatar: 头像地址</li>
-		<li>sex: 性别, 0表示女, 1表示男</li>
-		<li>status: 账号状态, 1表示启用(正常使用), 0表示禁用</li>
-		<li>creationDate: 注册时间</li>
-	</ul>
-	<h5 id="简要示例">
-		<a name="简要示例" href="#简要示例"></a>简要示例
-	</h5>
-	<pre>
-		<code
-			data-origin="<pre><code>{
-  &quot;code&quot;: 1,
-  &quot;datum&quot;: {
-        sex: 1,
-        status: 1,
-        avatar: &quot;/imgs/avatar.jpg&quot;,
-        creationDate: 1422782128161,
-        nickName: &quot;Longbo Ma&quot;,
-        email: &quot;mlongbo@gmail.com&quot;,
-        userId: &quot;f0f504f5710946e5b0a1d6a1acde4210&quot;
-    }
-}
-</code></pre>">{
-  "code": 1,
-  "datum": {
-        sex: 1,
-        status: 1,
-        avatar: "/imgs/avatar.jpg",
-        creationDate: 1422782128161,
-        username: "Longbo Ma",
-        email: "mlongbo@gmail.com",
-        userId: "f0f504f5710946e5b0a1d6a1acde4210"
-    }
-}
-</code>
-	</pre> -->
+
 	<h3 id="修改资料">
 		<a name="修改资料" href="#修改资料"></a>修改电话号码（暂时只能学生）
 	</h3>

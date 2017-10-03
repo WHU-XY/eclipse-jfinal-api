@@ -49,7 +49,7 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void configPlugin(Plugins arg0) {
 		// TODO Auto-generated method stub
-		loadPropertyFile("jdbc.properties");
+		loadPropertyFile("jdbc1.properties");
         HikariCPPlugin hcp = new HikariCPPlugin(getProperty("jdbcUrl"), 
                 getProperty("user"), 
                 getProperty("password"), 
