@@ -66,7 +66,7 @@
 	<commons-betwixt.version>0.8</commons-betwixt.version>
 	<commons-cli.version>1.1</commons-cli.version>
 	<commons-codec.version>1.9</commons-codec.version>
-	<commons-collections.version>3.2</commons-collections.version>
+	<commons-collections.version>3.2.2</commons-collections.version>
 	<commons-digester.version>1.8</commons-digester.version>
 	<commons-el.version>1.0</commons-el.version>
 	<commons-httpclient.version>3.0.1</commons-httpclient.version>
