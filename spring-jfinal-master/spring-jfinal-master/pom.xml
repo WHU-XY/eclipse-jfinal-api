@@ -70,7 +70,7 @@
 	<commons-digester.version>1.8</commons-digester.version>
 	<commons-el.version>1.0</commons-el.version>
 	<commons-httpclient.version>3.0.1</commons-httpclient.version>
-	<commons-io.version>2.5</commons-io.version>
+	<commons-io.version>2.7</commons-io.version>
 	<commons-lang.version>2.4</commons-lang.version> 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
