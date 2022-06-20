@@ -23,7 +23,7 @@
     <requirejs.version>2.1.14-1</requirejs.version>
     <require-css.version>0.1.7</require-css.version>
     <druid.version>1.0.9</druid.version>
-    <mysql.version>5.1.33</mysql.version>
+    <mysql.version>8.0.28</mysql.version>
     <nprogress.version>0.1.2</nprogress.version>
     <servlet.version>3.1.0</servlet.version>
     <logback.version>1.1.2</logback.version>
