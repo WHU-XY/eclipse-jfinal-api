@@ -16,7 +16,7 @@
 
 	<properties>
 		<m2eclipse.wtp.contextRoot>/tonr2</m2eclipse.wtp.contextRoot>
-		<jackson2.version>2.3.2</jackson2.version>
+		<jackson2.version>2.12.7.1</jackson2.version>
 		<servlet-api.version>3.0.1</servlet-api.version>
 		<junit.version>4.11</junit.version>
 	</properties>
