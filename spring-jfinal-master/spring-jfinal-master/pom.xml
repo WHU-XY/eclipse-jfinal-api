@@ -13,7 +13,7 @@
   	<webapp.name>spring-jfinal</webapp.name>
     <jdk.version>1.8</jdk.version>
     <!-- spring -->  
-    <spring.version>4.3.2.RELEASE</spring.version>  
+    <spring.version>6.0.0</spring.version>  
     <!-- mybatis -->  
     <mybatis.version>3.2.6</mybatis.version>
     <mybatis-spring.version>1.2.2</mybatis-spring.version>
